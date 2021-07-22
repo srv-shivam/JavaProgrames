@@ -107,8 +107,8 @@ public class CloneLinkedList {
         System.out.println("Cloned LinkedList : \n");
         display(nHead);
 
-        System.out.println("\nAddress of Original LinkdeList Head " + head);
-        System.out.println("\nAddress of Original LinkdeList Head " + nHead);
+        System.out.println("\nAddress of Original LinkedList Head " + head);
+        System.out.println("\nAddress of Original LinkedList Head " + nHead);
 
     }
 
