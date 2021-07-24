@@ -41,6 +41,7 @@ public class CloneLinkedList {
         return first;
     }
 
+    /***************************** First Method (With N Space) *************************/
 
     static Node_30 cloneLinkedList(Node_30 head) {
         HashMap<Node_30, Node_30> map = new HashMap<Node_30, Node_30>();
@@ -83,6 +84,61 @@ public class CloneLinkedList {
 
         return nHead;
     }
+    /*************************************************************************************************/
+
+
+    /****************************** Second Method (Without Space) *******************************/
+
+    static void duplicateList(Node_30 head) {
+
+        Node_30 curr = head;
+
+        while(curr != null) {
+            Node_30 newNode = new Node_30(curr.data);
+            Node_30 forw = curr.next;
+
+            curr.next = newNode;
+            newNode.next = forw;
+
+            curr = forw;
+        }
+    }
+
+    static void copyRandomPointer(Node_30 head) {
+
+        Node_30 curr = head;
+
+        while(curr != null) {
+
+            if (curr.random != null) {
+                curr.next.random = curr.random.next;
+            }
+            curr = curr.next.next;
+        }
+    }
+
+    static Node_30 extractCopyList(Node_30 head) {
+
+        Node_30 dummy = new Node_30(-1);
+        Node_30 curr = head, nCurr = dummy;
+
+        while(curr != null) {
+            nCurr.next = curr.next;
+            curr.next = curr.next.next;
+
+            nCurr = nCurr.next;
+            curr = curr.next;
+        }
+        return dummy.next;
+    }
+
+    static Node_30 copyList(Node_30 head) {
+        duplicateList(head);
+        copyRandomPointer(head);
+        return extractCopyList(head);
+    }
+
+    /**************************************************************************************************/
 
 
     static void display(Node_30 head) {
@@ -101,6 +157,8 @@ public class CloneLinkedList {
 
         Node_30 nHead = CloneLinkedList.cloneLinkedList(head);
 
+        System.out.println("/****************First Method***********/\n");
+
         System.out.println("Original LinkedList : \n");
         display(head);
 
@@ -110,6 +168,19 @@ public class CloneLinkedList {
         System.out.println("\nAddress of Original LinkedList Head " + head);
         System.out.println("\nAddress of Original LinkedList Head " + nHead);
 
+
+        System.out.println("/******************* Second Method ********************/\n");
+
+        Node_30 nHeader = CloneLinkedList.copyList(head);
+
+        System.out.println("Original LinkedList : ");
+        display(head);
+
+        System.out.println("Cloned LinkedList : ");
+        display(nHeader);
+
+        System.out.println("\nAddress of Original LinkedList Head " + head);
+        System.out.println("\nAddress of Original LinkedList Head " + nHeader);
     }
 
 }
