@@ -140,7 +140,6 @@ public class CloneLinkedList {
 
     /**************************************************************************************************/
 
-
     static void display(Node_30 head) {
         while (head != null) {
             System.out.println("Node Value : " + head.data);
