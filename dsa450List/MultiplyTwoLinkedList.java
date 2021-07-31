@@ -22,7 +22,7 @@ public class MultiplyTwoLinkedList {
      */
     private static void multiplyLL(Node_32 l1, Node_32 l2) {
 
-        if (l1 == null && l2 == null) return;
+        if (l1 == null || l2 == null) return;
 
         long num1 = 0, num2 = 0;
 
@@ -36,7 +36,8 @@ public class MultiplyTwoLinkedList {
             l2 = l2.next;
         }
 
-        System.out.println("\nMultiplication of two LinkedList is : " + (num1*num2));
+        long ans = (long) ((num1*num2) % (Math.pow(10,9) + 7));
+        System.out.println("\nMultiplication of two LinkedList is : " + ans);
 
     }
 
