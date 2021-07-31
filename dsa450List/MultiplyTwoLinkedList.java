@@ -14,6 +14,32 @@ class Node_32 {
 
 public class MultiplyTwoLinkedList {
 
+    /**
+     * Method multiplyLL will multiply two LinkedList with Time Complexity O(N or M) (maximum between N and M)
+     * and with space complexity O(N or M) (maximum between N and M)
+     * @param l1
+     * @param l2
+     */
+    private static void multiplyLL(Node_32 l1, Node_32 l2) {
+
+        if (l1 == null && l2 == null) return;
+
+        long num1 = 0, num2 = 0;
+
+        while(l1 != null) {
+            num1 = (num1*10) + l1.data;
+            l1 = l1.next;
+        }
+
+        while(l2 != null) {
+            num2 = (num2*10) + l2.data;
+            l2 = l2.next;
+        }
+
+        System.out.println("\nMultiplication of two LinkedList is : " + (num1*num2));
+
+    }
+
     private static void printLinkedList(Node_32 head) {
         if (head == null) return;
 
@@ -60,6 +86,8 @@ public class MultiplyTwoLinkedList {
 
         MultiplyTwoLinkedList.printLinkedList(head1);
         MultiplyTwoLinkedList.printLinkedList(head2);
+
+        MultiplyTwoLinkedList.multiplyLL(head1, head2);
 
     }
 
