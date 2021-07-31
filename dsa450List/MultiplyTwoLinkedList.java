@@ -32,6 +32,49 @@ public class MultiplyTwoLinkedList {
         return prev;
     }
 
+    private static Node_32 multiply(Node_32 head, int dig) {
+
+        Node_32 dummy = new Node_32(-1);
+        Node_32 ac = dummy;
+        int carry = 0, sum;
+
+        while(head != null || carry != 0) {
+
+            sum = carry + (head != null ? head.data : 0) * dig;
+
+            int digit = sum % 10;
+            carry = sum / 10;
+
+            ac.next = new Node_32(digit);
+
+            if (head != null) head = head.next;
+            ac = ac.next;
+        }
+        return dummy.next;
+    }
+
+    static Node_32 multiplyTwoLinkedList(Node_32 l1, Node_32 l2) {
+
+        if (l1 == null || l2 == null) return null;
+
+        l1 = reverseLinkedList(l1);
+        l2 = reverseLinkedList(l2);
+
+        Node_32 l2_Itr = l2;
+        Node_32 dummy = new Node_32(-1);
+        Node_32 curr = dummy;
+
+        while(l2_Itr != null) {
+
+
+
+
+            l2_Itr = l2_Itr.next;
+        }
+
+        return null;
+    }
+
     /**
      * Method multiplyLL will multiply two LinkedList with Time Complexity O(N or M) (maximum between N and M)
      * and with space complexity O(N or M) (maximum between N and M)
