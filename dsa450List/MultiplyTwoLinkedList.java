@@ -15,10 +15,28 @@ class Node_32 {
 public class MultiplyTwoLinkedList {
 
     /**
+     * reverseLinkedList is method which reverse the LinkedList
+     * @param head head
+     * @return null
+     */
+    private static Node_32 reverseLinkedList(Node_32 head) {
+        if (head == null || head.next == null) return head;
+        Node_32 prev = null, curr = head, next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+    /**
      * Method multiplyLL will multiply two LinkedList with Time Complexity O(N or M) (maximum between N and M)
      * and with space complexity O(N or M) (maximum between N and M)
-     * @param l1
-     * @param l2
+     * @param l1 l1
+     * @param l2 l2
      */
     private static void multiplyLL(Node_32 l1, Node_32 l2) {
 
@@ -55,9 +73,9 @@ public class MultiplyTwoLinkedList {
 
         Scanner sc = new Scanner(System.in);
 
-        /**
-         * Input for first Linked List
-         */
+
+        //Input for first Linked List
+
         System.out.print("Enter the size of first Linked List : ");
         int N = sc.nextInt();
 
@@ -70,9 +88,8 @@ public class MultiplyTwoLinkedList {
             tail = tail.next;
         }
 
-        /**
-         * Input for second Linked List
-         */
+        //Input for second Linked List
+
         System.out.print("\nEnter the size of second Linked List : ");
         int M = sc.nextInt();
 
