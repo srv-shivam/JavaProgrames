@@ -17,7 +17,7 @@ public class MultiplyTwoLinkedList {
     /**
      * reverseLinkedList is method which reverse the LinkedList
      * @param head head
-     * @return null
+     * @return prev
      */
     private static Node_32 reverseLinkedList(Node_32 head) {
         if (head == null || head.next == null) return head;
