@@ -14,6 +14,16 @@ class Node_32 {
 
 public class MultiplyTwoLinkedList {
 
+    private static void printLinkedList(Node_32 head) {
+        if (head == null) return;
+
+        System.out.print("\nList is : ");
+        while(head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -47,6 +57,9 @@ public class MultiplyTwoLinkedList {
             tail.next = new Node_32(sc.nextInt());
             tail = tail.next;
         }
+
+        MultiplyTwoLinkedList.printLinkedList(head1);
+        MultiplyTwoLinkedList.printLinkedList(head2);
 
     }
 
