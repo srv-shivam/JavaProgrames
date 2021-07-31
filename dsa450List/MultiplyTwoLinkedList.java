@@ -53,6 +53,30 @@ public class MultiplyTwoLinkedList {
         return dummy.next;
     }
 
+
+    private static Node_32 addTwoLinkedList(Node_32 dummy, Node_32 prod) {
+
+        int carry = 0;
+        Node_32 curr = dummy;
+
+        while (prod != null || carry != 0) {
+
+            int sum = carry + (curr.next != null ? curr.next.data : 0) + prod.data;
+            int digit = sum % 10;
+            carry = sum / 10;
+
+            if (curr.next != null)
+                curr.next.data = sum;
+            else
+                curr.next = new Node_32(digit);
+
+            if (prod != null) prod = prod.next;
+            curr = curr.next;
+        }
+        return dummy;
+    }
+
+
     static Node_32 multiplyTwoLinkedList(Node_32 l1, Node_32 l2) {
 
         if (l1 == null || l2 == null) return null;
@@ -66,8 +90,10 @@ public class MultiplyTwoLinkedList {
 
         while(l2_Itr != null) {
 
+            Node_32 prod = multiply(l1, l2_Itr.data);
 
-
+            dummy = addTwoLinkedList(curr, prod);
+            curr = curr.next;
 
             l2_Itr = l2_Itr.next;
         }
