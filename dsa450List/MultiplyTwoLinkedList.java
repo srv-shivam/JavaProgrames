@@ -77,6 +77,12 @@ public class MultiplyTwoLinkedList {
     }
 
 
+    /**
+     * Code to be written properly
+     * @param l1 l1
+     * @param l2 l2
+     * @return dummy
+     */
     static Node_32 multiplyTwoLinkedList(Node_32 l1, Node_32 l2) {
 
         if (l1 == null || l2 == null) return null;
@@ -97,8 +103,7 @@ public class MultiplyTwoLinkedList {
 
             l2_Itr = l2_Itr.next;
         }
-
-        return null;
+        return reverseLinkedList(dummy.next);
     }
 
     /**
@@ -175,6 +180,9 @@ public class MultiplyTwoLinkedList {
         MultiplyTwoLinkedList.printLinkedList(head2);
 
         MultiplyTwoLinkedList.multiplyLL(head1, head2);
+
+        Node_32 ansHead = MultiplyTwoLinkedList.multiplyTwoLinkedList(head1, head2);
+        MultiplyTwoLinkedList.printLinkedList(ansHead);
 
     }
 
