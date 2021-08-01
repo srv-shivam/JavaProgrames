@@ -54,7 +54,7 @@ public class MultiplyTwoLinkedList {
     }
 
 
-    private static Node_32 addTwoLinkedList(Node_32 dummy, Node_32 prod) {
+    private static void addTwoLinkedList(Node_32 dummy, Node_32 prod) {
 
         int carry = 0;
         Node_32 curr = dummy;
@@ -66,14 +66,13 @@ public class MultiplyTwoLinkedList {
             carry = sum / 10;
 
             if (curr.next != null)
-                curr.next.data = sum;
+                curr.next.data = digit;
             else
                 curr.next = new Node_32(digit);
 
             if (prod != null) prod = prod.next;
             curr = curr.next;
         }
-        return dummy;
     }
 
 
@@ -98,7 +97,7 @@ public class MultiplyTwoLinkedList {
 
             Node_32 prod = multiply(l1, l2_Itr.data);
 
-            dummy = addTwoLinkedList(curr, prod);
+            addTwoLinkedList(curr, prod);
             curr = curr.next;
 
             l2_Itr = l2_Itr.next;
@@ -182,6 +181,15 @@ public class MultiplyTwoLinkedList {
         MultiplyTwoLinkedList.multiplyLL(head1, head2);
 
         Node_32 ansHead = MultiplyTwoLinkedList.multiplyTwoLinkedList(head1, head2);
+        Node_32 a = ansHead;
+        long num = 0;
+
+        while (a != null) {
+            num = (num*10) + a.data;
+            a = a.next;
+        }
+        System.out.print("\nMultiplication : " + num);
+
         MultiplyTwoLinkedList.printLinkedList(ansHead);
 
     }
