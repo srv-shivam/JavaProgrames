@@ -61,7 +61,7 @@ public class MultiplyTwoLinkedList {
 
         while (prod != null || carry != 0) {
 
-            int sum = carry + (curr.next != null ? curr.next.data : 0) + prod.data;
+            int sum = carry + (curr.next != null ? curr.next.data : 0) + (prod != null ? prod.data : 0);
             int digit = sum % 10;
             carry = sum / 10;
 
@@ -185,7 +185,7 @@ public class MultiplyTwoLinkedList {
         long num = 0;
 
         while (a != null) {
-            num = (num*10) + a.data;
+            num = (long) (((num*10) % (Math.pow(10, 9)+7) + a.data % (Math.pow(10, 9)+7)) % (Math.pow(10, 9)+7));
             a = a.next;
         }
         System.out.print("\nMultiplication : " + num);
