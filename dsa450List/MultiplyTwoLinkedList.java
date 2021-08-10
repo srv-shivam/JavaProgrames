@@ -116,14 +116,14 @@ public class MultiplyTwoLinkedList {
         if (l1 == null || l2 == null) return;
 
         long num1 = 0, num2 = 0;
-
+        long mod = 1000000007;
         while(l1 != null) {
-            num1 = (num1*10) + l1.data;
+            num1 = (((num1%mod)*(10%mod))%mod + (l1.data % mod)%mod)%mod;
             l1 = l1.next;
         }
 
         while(l2 != null) {
-            num2 = (num2*10) + l2.data;
+            num2 = (((num2%mod)*(10%mod))%mod + (l2.data % mod)%mod)%mod;
             l2 = l2.next;
         }
 
