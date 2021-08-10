@@ -20,9 +20,24 @@ public class LinkedList_34 {
 
     static Node_34 compute(Node_34 head) {
 
+        if (head == null || head.next == null) return head;
 
+        Node_34 curr = head;
+        Node_34 prev = new Node_34(-1);
+        head = prev;
 
-        return null;
+        while(curr.next != null) {
+
+            if (curr.data >= curr.next.data) {
+                curr = curr.next;
+            }
+            else {
+                curr = curr.next;
+                prev.next = curr;
+                prev = prev.next;
+            }
+        }
+        return head.next;
     }
 
     static void displayLinkedList(Node_34 head) {
@@ -54,5 +69,7 @@ public class LinkedList_34 {
         }
 
         LinkedList_34.displayLinkedList(head);
+
+        LinkedList_34.displayLinkedList(LinkedList_34.compute(head));
     }
 }
