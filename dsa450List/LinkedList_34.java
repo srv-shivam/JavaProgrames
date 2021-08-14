@@ -18,26 +18,23 @@ class Node_34 {
 
 public class LinkedList_34 {
 
+    static Node_34 reverseLinkedList(Node_34 head) {
+
+        Node_34 prev = null, curr = head, next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
     static Node_34 compute(Node_34 head) {
 
         if (head == null || head.next == null) return head;
-
-        Node_34 curr = head;
-        Node_34 prev = new Node_34(-1);
-        head = prev;
-
-        while(curr.next != null) {
-
-            if (curr.data >= curr.next.data) {
-                curr = curr.next;
-            }
-            else {
-                curr = curr.next;
-                prev.next = curr;
-                prev = prev.next;
-            }
-        }
-        return head.next;
+        return null;
     }
 
     static void displayLinkedList(Node_34 head) {
