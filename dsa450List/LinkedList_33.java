@@ -6,21 +6,21 @@ import java.util.Scanner;
  *
  * Given a singly linked list, remove all the nodes which have a greater value on its following nodes.
  */
-class Node_34 {
+class Node_33 {
     int data;
-    Node_34 next;
+    Node_33 next;
 
-    Node_34(int data) {
+    Node_33(int data) {
         this.data = data;
         this.next = null;
     }
 }
 
-public class LinkedList_34 {
+public class LinkedList_33 {
 
-    static Node_34 reverseLinkedList(Node_34 head) {
+    static Node_33 reverseLinkedList(Node_33 head) {
 
-        Node_34 prev = null, curr = head, next;
+        Node_33 prev = null, curr = head, next;
 
         while(curr != null) {
             next = curr.next;
@@ -31,14 +31,14 @@ public class LinkedList_34 {
         return prev;
     }
 
-    static Node_34 compute(Node_34 head) {
+    static Node_33 compute(Node_33 head) {
 
         if (head == null || head.next == null) return head;
 
         head = reverseLinkedList(head);
 
-        Node_34 dummy = new Node_34(-1);
-        Node_34 d = dummy, curr = head;
+        Node_33 dummy = new Node_33(-1);
+        Node_33 d = dummy, curr = head;
         int max_so_far = Integer.MIN_VALUE;
 
         while(curr != null) {
@@ -54,7 +54,7 @@ public class LinkedList_34 {
         return reverseLinkedList(dummy.next);
     }
 
-    static void displayLinkedList(Node_34 head) {
+    static void displayLinkedList(Node_33 head) {
         System.out.print("Linked List is : ");
         while(head != null) {
             if (head.next == null) {
@@ -74,16 +74,16 @@ public class LinkedList_34 {
         int size = sc.nextInt();
 
         System.out.print("Enter the data : ");
-        Node_34 head = new Node_34(sc.nextInt());
+        Node_33 head = new Node_33(sc.nextInt());
         --size;
-        Node_34 ptr = head;
+        Node_33 ptr = head;
         while(size--> 0) {
-            ptr.next = new Node_34(sc.nextInt());
+            ptr.next = new Node_33(sc.nextInt());
             ptr = ptr.next;
         }
 
-        LinkedList_34.displayLinkedList(head);
+        LinkedList_33.displayLinkedList(head);
 
-        LinkedList_34.displayLinkedList(LinkedList_34.compute(head));
+        LinkedList_33.displayLinkedList(LinkedList_33.compute(head));
     }
 }
