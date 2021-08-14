@@ -34,7 +34,24 @@ public class LinkedList_34 {
     static Node_34 compute(Node_34 head) {
 
         if (head == null || head.next == null) return head;
-        return null;
+
+        head = reverseLinkedList(head);
+
+        Node_34 dummy = new Node_34(-1);
+        Node_34 d = dummy, curr = head;
+        int max_so_far = Integer.MIN_VALUE;
+
+        while(curr != null) {
+
+            if (curr.data >= max_so_far) {
+                max_so_far = curr.data;
+                d.next = curr;
+                d = d.next;
+            }
+            curr = curr.next;
+        }
+        d.next = null;
+        return reverseLinkedList(dummy.next);
     }
 
     static void displayLinkedList(Node_34 head) {
