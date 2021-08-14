@@ -24,7 +24,7 @@ public class LinkedList_34 {
 
         while(curr != null) {
 
-            /**
+            /*
              * curr.data % 2 == 0 can be also witten as,
              * 1) (curr.data ^ 1) == curr.data + 1 results in EVEN
              * 2) (curr.data & 1) == 0 results in EVEN
@@ -68,8 +68,7 @@ public class LinkedList_34 {
         Node_34 tail = head;
         --size;
         while(size --> 0) {
-            Node_34 newNode = new Node_34(sc.nextInt());
-            tail.next = newNode;
+            tail.next = new Node_34(sc.nextInt());
             tail = tail.next;
         }
         displayLinkedList(head);
