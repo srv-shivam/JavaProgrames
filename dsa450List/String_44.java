@@ -1,35 +1,36 @@
 package dsa450List;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class String_44 {
 
     static String firstNonRepeating(String str) {
 
-        if (str == "") return " ";
+        if (Objects.equals(str, "")) return " ";
 
-        String result = String.valueOf(str.charAt(0));
-        char firstNon = str.charAt(0);
+        Map<Character, Integer> charMap = new HashMap<>();
+        Queue<Character> q = new LinkedList<>();
+        String result = "";
 
-        for (int i=1; i<str.length(); i++) {
-            boolean flag = false;
-            for (int j = 0; j<i; j++) {
-                if (!(str.charAt(j) == str.charAt(i))) {
-                    flag = true;
-                }
-                else {
-                    flag = false;
+        for (int i=0; i<str.length(); i++) {
+
+            charMap.put(str.charAt(i), charMap.getOrDefault(str.charAt(i), 0) + 1);
+
+            if (charMap.get(str.charAt(i)) == 1) {
+                q.add(str.charAt(i));
+            }
+
+            while (!q.isEmpty()) {
+                if (charMap.get(q.peek()) == 1) {
+                    break;
+                } else {
+                    q.remove();
                 }
             }
-            if (flag) {
-                firstNon = str.charAt(i);
-                result += String.valueOf(firstNon);
-            }
-            else
-                result += String.valueOf('#');
 
+            if (q.isEmpty()) result += "#";
+            else result += q.peek();
         }
-
         return result;
     }
 
