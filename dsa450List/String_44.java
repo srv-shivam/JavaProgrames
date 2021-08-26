@@ -4,6 +4,35 @@ import java.util.*;
 
 public class String_44 {
 
+    static String computeFirstNonRepeating(String str) {
+        int[] c = new int[26];
+        Queue<Character> q = new LinkedList<>();
+        StringBuilder result = new StringBuilder();
+
+        for (int i=0; i<str.length(); i++) {
+
+            ++c[str.charAt(i)-'a'];
+
+            if (c[str.charAt(i)-97] == 1) {
+                q.add(str.charAt(i));
+            }
+
+            while (!q.isEmpty()) {
+                if (c[q.peek()-97] == 1) {
+                    result.append(q.peek());
+                    break;
+                }
+                else q.remove();
+            }
+            if (q.isEmpty()) result.append("#");
+//            else result += q.peek();
+        }
+        return result.toString();
+    }
+
+    /**
+     * Solution using Map and Queue
+     **/
     static String firstNonRepeating(String str) {
 
         if (Objects.equals(str, "")) return " ";
@@ -38,9 +67,10 @@ public class String_44 {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the string : ");
         String str = sc.next();
-        System.out.print("String is : " + str);
+        System.out.println("String is : " + str);
 
-        String string = firstNonRepeating(str);
+        String string = computeFirstNonRepeating(str);
         System.out.print("\nResult is : " + string);
+
     }
 }
