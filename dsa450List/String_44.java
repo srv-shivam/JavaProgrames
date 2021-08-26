@@ -70,8 +70,19 @@ public class String_44 {
         String str = sc.next();
         System.out.println("String is : " + str);
 
+        long f1_start = System.currentTimeMillis();
         String string = computeFirstNonRepeating(str);
+        long f1_end = System.currentTimeMillis();
+
         System.out.print("\nResult is : " + string);
+        System.out.println("\nTime taken by function f1 : " + (f1_end - f1_start) + " ms");
+
+        long f2_start = System.currentTimeMillis();
+        String string2 = firstNonRepeating(str);
+        long f2_end = System.currentTimeMillis();
+
+        System.out.println("\nResult is : " + string2);
+        System.out.println("Time taken by function f2 : " + (f2_end - f2_start) + " ms");
 
     }
 }
