@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class ReverseOfString {
 
     private static void printReverseString(int index, String str) {
-        if (index < 0) {
+        if (index == 0) {
+            System.out.print(str.charAt(index));
             return;
         }
         System.out.print(str.charAt(index));
