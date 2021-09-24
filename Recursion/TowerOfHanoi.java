@@ -5,7 +5,6 @@ public class TowerOfHanoi {
 
     // If disk numbers are like 1 > 2 > 3 > 4 ....... > n-3 > n-2 > n-1 > n
     private static void towerOfHanoi(int i, int n, String src, String helper, String dest) {
-
         if (i == n) {
             System.out.println("Transfer of disk " + i + " from " + src + " to " + dest);
             return;
