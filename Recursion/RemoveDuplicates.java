@@ -2,7 +2,7 @@ package Recursion;
 
 public class RemoveDuplicates {
 
-    private static boolean charArray[] = new boolean[26];
+    private static final boolean[] charArray = new boolean[26];
 
     private static void removeDuplicate(String str, int idx, String newString) {
 
