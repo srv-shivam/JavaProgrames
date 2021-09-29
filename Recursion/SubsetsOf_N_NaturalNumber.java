@@ -2,7 +2,7 @@ package Recursion;
 
 public class SubsetsOf_N_NaturalNumber {
 
-    // Ways1 to print all subsets of n natural numbers
+    // Ways1 to print all subsets of N natural numbers
     private static void printSubsets(int start, int n, String subsets) {
 
         if (start > n) {
@@ -17,7 +17,7 @@ public class SubsetsOf_N_NaturalNumber {
         printSubsets(start + 1, n, subsets);
     }
 
-    //Ways2 to print all subsets of n natural numbers
+    //Ways2 to print all subsets of N natural numbers
     private static void subsetsComb(int n, String subsets) {
 
         if (n == 0) {
