@@ -8,7 +8,9 @@ public class CreateAndPrintStack {
         Stack.push(10);
         Stack.push(12);
         Stack.push(8);
+        Stack.pop();
         Stack.push(6);
+//        Stack.peek();
         Stack.push(4);
 
         Node temp = Stack.top;
