@@ -1,29 +1,56 @@
 package stack;
 
+import java.util.EmptyStackException;
+
 public class Stack {
 
-    static Node top = null;
-    private static int length = 0;
+    private Node top;
+    private int length;
 
-    static int getLength() {
+    private class Node {
+        private int data;
+        private Node next;
+
+        public Node (int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    Stack() {
+        this.top = null;
+        this.length = 0;
+    }
+
+    public int length() {
         return length;
     }
 
-    static void push(int data) {
+    public boolean isEmpty() {
+        return length == 0;
+    }
+
+    public void push(int data) {
         Node newNode = new Node(data);
         newNode.next = top;
         top = newNode;
         ++length;
     }
 
-    static int pop() {
-        int data = top.data;
+    public int pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        int result = top.data;
         top = top.next;
         --length;
-        return data;
+        return result;
     }
 
-    static int peek() {
+    public int peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
         return top.data;
     }
 
