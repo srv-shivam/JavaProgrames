@@ -9,12 +9,11 @@ public class Stack {
         return length;
     }
 
-    static Node push(int data) {
+    static void push(int data) {
         Node newNode = new Node(data);
         newNode.next = top;
         top = newNode;
         ++length;
-        return top;
     }
 
     static int pop() {
