@@ -6,7 +6,7 @@ public class MoveAllZeros {
     static void moveAllZerosToEnd(int[] arr, int n) {
 
         int j=0; // j will point to the indexes where value is 0
-        for(int i=0; i<n; ++i) {
+        for(int i=0; i<n; ++i) {  // i will point to the indexes where value is non-zero
             if (arr[i] != 0 && arr[j] == 0) {
                 int temp = arr[i];
                 arr[i] = arr[j];
