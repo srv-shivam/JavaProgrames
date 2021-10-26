@@ -1,4 +1,4 @@
-package Recursion;
+package recursion;
 
 /**
  * Count the number of paths in maze (size = (n, m)) when we are at (0, 0) and we have to reach ending cell(n-1, m-1)

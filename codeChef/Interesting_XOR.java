@@ -1,4 +1,4 @@
-package CodeChef;
+package codeChef;
 
 import java.util.*;
 public class Interesting_XOR {

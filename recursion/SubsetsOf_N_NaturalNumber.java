@@ -1,4 +1,4 @@
-package Recursion;
+package recursion;
 
 public class SubsetsOf_N_NaturalNumber {
 
