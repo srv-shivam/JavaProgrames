@@ -64,7 +64,27 @@ public class Queue<E> {
         Queue<Integer>.Node temp = queue.front;
 
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            if (temp.next == null) {
+                System.out.print("null");
+            } else {
+                System.out.print(temp.data + " -> ");
+            }
+            temp = temp.next;
+        }
+
+        queue.dequeue();
+        queue.enqueue(60);
+        queue.dequeue();
+        queue.dequeue();
+
+        temp = queue.front;
+        System.out.print("\nAfter performing few dequeue() operations : ");
+        while (temp != null) {
+            if (temp.next == null) {
+                System.out.print("null");
+            } else {
+                System.out.print(temp.data + " -> ");
+            }
             temp = temp.next;
         }
     }
