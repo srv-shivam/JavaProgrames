@@ -49,6 +49,9 @@ public class Queue<E> {
         }
         E data = front.data;
         front = front.next;
+        if (front == null) {
+            rear = null;
+        }
         --length;
         return data;
     }
