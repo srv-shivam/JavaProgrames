@@ -1,5 +1,7 @@
 package queue;
 
+import java.util.NoSuchElementException;
+
 public class Queue<E> {
 
     private Node front, rear;
@@ -16,8 +18,9 @@ public class Queue<E> {
     }
 
     Queue() {
-        this.front = this.rear = null;
-        length = 0;
+        this.front = null;
+        this.rear = null;
+        this.length = 0;
     }
 
     public int length() {
@@ -42,13 +45,24 @@ public class Queue<E> {
 
     public E dequeue() {
         if (isEmpty()) {
-            System.out.println("Empty Queue!! No elements present");
-            return null;
-        } else {
-            E data = front.data;
-            front = front.next;
-            --length;
-            return data;
+            throw new NoSuchElementException();
+        }
+        E data = front.data;
+        front = front.next;
+        --length;
+        return data;
+    }
+
+    public void printQueue() {
+        Node current = front;
+
+        while (current != null) {
+            if (current.next == null) {
+                System.out.print(current.data + " -> null");
+            } else {
+                System.out.print(current.data + " -> ");
+            }
+            current = current.next;
         }
     }
 
@@ -61,32 +75,15 @@ public class Queue<E> {
         queue.enqueue(40);
         queue.enqueue(50);
 
-        Queue<Integer>.Node temp = queue.front;
-
-        while (temp != null) {
-            if (temp.next == null) {
-                System.out.print("null");
-            } else {
-                System.out.print(temp.data + " -> ");
-            }
-            temp = temp.next;
-        }
+        queue.printQueue();
 
         queue.dequeue();
         queue.enqueue(60);
         queue.dequeue();
         queue.dequeue();
 
-        temp = queue.front;
         System.out.print("\nAfter performing few dequeue() operations : ");
-        while (temp != null) {
-            if (temp.next == null) {
-                System.out.print("null");
-            } else {
-                System.out.print(temp.data + " -> ");
-            }
-            temp = temp.next;
-        }
+        queue.printQueue();
     }
 
 
