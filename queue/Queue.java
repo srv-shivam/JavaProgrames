@@ -84,6 +84,12 @@ public class Queue<E> {
 
         System.out.print("\nAfter performing few dequeue() operations : ");
         queue.printQueue();
+
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+
+        queue.dequeue(); // this line will throw NoSuchElementException as queue is empty
     }
 
 
