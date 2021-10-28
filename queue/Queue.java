@@ -45,7 +45,7 @@ public class Queue<E> {
 
     public E dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Queue is empty!!");
+            throw new NoSuchElementException("\nQueue is empty!!");
         }
         E data = front.data;
         front = front.next;
