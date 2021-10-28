@@ -45,7 +45,7 @@ public class Queue<E> {
 
     public E dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("Queue is empty!!");
         }
         E data = front.data;
         front = front.next;
@@ -60,13 +60,10 @@ public class Queue<E> {
         Node current = front;
 
         while (current != null) {
-            if (current.next == null) {
-                System.out.print(current.data + " -> null");
-            } else {
-                System.out.print(current.data + " -> ");
-            }
+            System.out.print(current.data + " -> ");
             current = current.next;
         }
+        System.out.print("null");
     }
 
     public static void main(String[] args) {
@@ -92,7 +89,7 @@ public class Queue<E> {
         queue.dequeue();
         queue.dequeue();
 
-        queue.dequeue(); // this line will throw NoSuchElementException as queue is empty
+//        queue.dequeue(); // this line will throw NoSuchElementException as queue is empty
     }
 
 
