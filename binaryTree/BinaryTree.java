@@ -24,7 +24,7 @@ public class BinaryTree {
 
     TreeNode createBinaryTree() {
 
-        TreeNode current = null;
+        TreeNode current;
         System.out.print("Enter data : ");
         int data = sc.nextInt();
 
