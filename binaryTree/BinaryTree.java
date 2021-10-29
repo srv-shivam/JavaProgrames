@@ -22,8 +22,9 @@ public class BinaryTree {
         this.root = null;
     }
 
-    public TreeNode createBinaryTree() {
+    TreeNode createBinaryTree() {
 
+        TreeNode current = null;
         System.out.print("Enter data : ");
         int data = sc.nextInt();
 
@@ -31,20 +32,54 @@ public class BinaryTree {
             return null;
         }
 
-        root = new TreeNode(data);
+        current = new TreeNode(data);
 
         System.out.print("Enter left node for " + data + "\n");
-        root.left = createBinaryTree();
+        current.left = createBinaryTree();
 
         System.out.print("Enter right node for " + data + "\n");
-        root.right = createBinaryTree();
+        current.right = createBinaryTree();
 
+        root = current;
         return root;
+    }
+
+    void inOrder(TreeNode root) {
+
+        if (root == null) return;
+
+        inOrder(root.left);
+        System.out.print(root.data + " ");
+        inOrder(root.right);
+    }
+
+    void preOrder(TreeNode root) {
+
+        if (root == null) return;
+
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+    void postOrder(TreeNode root) {
+
+        if (root == null) return;
+
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.data + " ");
     }
 
     public static void main(String[] args) {
 
         BinaryTree binaryTree = new BinaryTree();
-        binaryTree.createBinaryTree();
+        TreeNode root = binaryTree.createBinaryTree();
+
+        binaryTree.inOrder(root);
+        System.out.println();
+        binaryTree.preOrder(root);
+        System.out.println();
+        binaryTree.postOrder(root);
     }
 }
