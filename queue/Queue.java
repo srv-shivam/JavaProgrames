@@ -89,7 +89,7 @@ public class Queue<E> {
         queue.dequeue();
         queue.dequeue();
 
-//        queue.dequeue(); // this line will throw NoSuchElementException as queue is empty
+        queue.dequeue(); // this line will throw NoSuchElementException as queue is empty
     }
 
 
