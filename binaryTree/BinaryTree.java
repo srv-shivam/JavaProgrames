@@ -19,7 +19,7 @@ public class BinaryTree {
         }
     }
 
-    public BinaryTree() {
+    BinaryTree() {
         this.root = null;
     }
 
