@@ -70,6 +70,21 @@ public class BinaryTree {
         }
     }
 
+    void displayTree(Node node) {
+        if (node == null) {
+            return;
+        }
+        String str = "";
+        str += (node.left == null ? ". " : node.left.data);
+        str += (" <- " + node.data + " -> ");
+        str += (node.right == null ? ". " : node.right.data);
+
+        System.out.println(str);
+
+        displayTree(node.left);
+        displayTree(node.right);
+    }
+
     void inOder(Node root) {
         if (root == null) return;
         inOder(root.left);
@@ -79,10 +94,11 @@ public class BinaryTree {
 
     public static void main(String[] args) throws Exception {
         // Integer array of nodes to create Binary Tree
-        Integer[] nodes = {50, 12, 10, null, null, 15, 20, null, null, null, 75, 62, null, 72, null, null, 80, null, null};
+        Integer[] nodes = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.constructBinaryTree(nodes);
-        binaryTree.inOder(binaryTree.root);
+//        binaryTree.inOder(binaryTree.root);
+        binaryTree.displayTree(binaryTree.root);
     }
 }
