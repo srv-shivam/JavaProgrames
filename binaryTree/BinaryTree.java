@@ -1,6 +1,7 @@
 package binaryTree;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 public class BinaryTree {
 
@@ -53,6 +54,22 @@ public class BinaryTree {
         inOrder(root.right);
     }
 
+//    void inOrderIterativeTraversal() {
+//        if (root == null) return;
+//
+//        Stack<TreeNode> stack = new Stack<>();
+//        stack.push(root);
+////        while (!stack.isEmpty()) {
+////            TreeNode current;
+////            if (current.right != null) {
+////                stack.push(current.right);
+////            }
+////            if (current.left != null) {
+////                stack.push(current.left);
+////            }
+//        }
+//    }
+
     void preOrder(TreeNode root) {
 
         if (root == null) return;
@@ -60,6 +77,24 @@ public class BinaryTree {
         System.out.print(root.data + " ");
         preOrder(root.left);
         preOrder(root.right);
+    }
+
+    void preOrderIterativeTraversal() {
+        if (root == null) return;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode current = stack.pop();
+            System.out.print(current.data + " ");
+
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
     }
 
     void postOrder(TreeNode root) {
@@ -76,10 +111,14 @@ public class BinaryTree {
         BinaryTree binaryTree = new BinaryTree();
         TreeNode root = binaryTree.createBinaryTree();
 
-        binaryTree.inOrder(root);
-        System.out.println();
+//        binaryTree.inOrder(root);
+//        System.out.println();
+        System.out.print("Recursive preOrder Traversal : ");
         binaryTree.preOrder(root);
         System.out.println();
-        binaryTree.postOrder(root);
+        System.out.print("Iterative preOrder Traversal : ");
+        binaryTree.preOrderIterativeTraversal();
+//        System.out.println();
+//        binaryTree.postOrder(root);
     }
 }
