@@ -8,7 +8,7 @@ public class BinaryTree {
     private TreeNode root;
     Scanner sc = new Scanner(System.in);
 
-    private static class TreeNode {
+    public static class TreeNode {
         private TreeNode left;
         private int data;
         private TreeNode right;
@@ -19,7 +19,7 @@ public class BinaryTree {
         }
     }
 
-    BinaryTree() {
+    public BinaryTree() {
         this.root = null;
     }
 
@@ -45,7 +45,7 @@ public class BinaryTree {
         return root;
     }
 
-    void inOrder(TreeNode root) {
+    public void inOrder(TreeNode root) {
 
         if (root == null) return;
 
