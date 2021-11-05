@@ -146,17 +146,53 @@ public class BinaryTree {
         return (Math.max(leftHeight, rightHeight) + 1);
     }
 
+    static void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.print(node.data + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    static void inOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(node.left);
+        System.out.print(node.data + " ");
+        inOrder(node.right);
+    }
+
+    static void postOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.data + " ");
+    }
+
     public static void main(String[] args) throws Exception {
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         constructBinaryTree(nodes);
-        System.out.println("Binary Tree -> ");
+        System.out.println("Binary Tree in Euler-> ");
         displayTree(root);
 
         System.out.println("\nSize of Binary Tree : " + size(root));
         System.out.println("Sum of nodes of Binary Tree : " + sum(root));
         System.out.println("Maximum node of Binary Tree : " + max(root));
         System.out.println("Height of Binary Tree : " + height(root));
+
+        System.out.print("\nPreOrder Traversal of Binary tree ");
+        preOrder(root);
+
+        System.out.print("\nInOrder Traversal of Binary tree ");
+        inOrder(root);
+
+        System.out.print("\nPostOrder Traversal of Binary tree ");
+        postOrder(root);
     }
 }
