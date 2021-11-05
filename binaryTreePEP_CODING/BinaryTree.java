@@ -1,5 +1,7 @@
 package binaryTreePEP_CODING;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -173,6 +175,32 @@ public class BinaryTree {
         System.out.print(node.data + " ");
     }
 
+    /**
+     * Method for Level Order Traversal of Binary Tree
+     * IMPORTANT: RPC (Remove node, print that node, then add child of removed node)
+     */
+    static void levelOrderTraversal(Node node) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+
+            for (int i = 0; i < count; i++) {
+                node = queue.remove();
+                System.out.print(node.data + " ");
+
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -194,5 +222,8 @@ public class BinaryTree {
 
         System.out.print("\nPostOrder Traversal of Binary tree ");
         postOrder(root);
+
+        System.out.print("\n\nLevel Order Traversal of Binary Tree : \n");
+        levelOrderTraversal(root);
     }
 }
