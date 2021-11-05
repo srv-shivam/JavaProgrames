@@ -180,6 +180,9 @@ public class BinaryTree {
      * IMPORTANT: RPC (Remove node, print that node, then add child of removed node)
      */
     static void levelOrderTraversal(Node node) {
+        if (node == null)
+            return;
+
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
 
@@ -199,6 +202,72 @@ public class BinaryTree {
             }
             System.out.println();
         }
+    }
+
+    static void levelWiseSum(Node node) {
+        if (node == null)
+            return;
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        int a = 0;
+
+        while (!queue.isEmpty()) {
+            int sum = 0;
+            int count = queue.size();
+            for (int i = 0; i < count; i++) {
+                node = queue.remove();
+                sum += node.data;
+
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            System.out.println("Level " + (++a) + " sum -> " + sum);
+        }
+    }
+
+    static void iterativeTraversal(Node node) {
+        if (node == null)
+            return;
+
+        StringBuilder preOrder = new StringBuilder();
+        StringBuilder inOrder = new StringBuilder();
+        StringBuilder postOrder = new StringBuilder();
+
+        Stack<Pair> stack = new Stack<>();
+        Pair rootPair = new Pair(node, 1);
+
+        stack.push(rootPair);
+
+        while (!stack.isEmpty()) {
+            Pair top = stack.peek();
+
+            if (top.state == 1) {
+                preOrder.append(top.node.data).append(" ");
+                ++top.state;
+
+                if (top.node.left != null) {
+                    Pair newPair = new Pair(top.node.left, 1);
+                    stack.push(newPair);
+                }
+
+            } else if (top.state == 2) {
+                inOrder.append(top.node.data).append(" ");
+                ++top.state;
+
+                if (top.node.right != null) {
+                    Pair newPair = new Pair(top.node.right, 1);
+                    stack.push(newPair);
+                }
+            } else {
+                postOrder.append(top.node.data).append(" ");
+                stack.pop();
+            }
+        }
+
+        System.out.println("\nPreOrder : " + preOrder);
+        System.out.println("InOrder : " + inOrder);
+        System.out.println("PostOrder : " + postOrder);
     }
 
     public static void main(String[] args) throws Exception {
@@ -225,5 +294,11 @@ public class BinaryTree {
 
         System.out.print("\n\nLevel Order Traversal of Binary Tree : \n");
         levelOrderTraversal(root);
+
+        System.out.println("\nLevel Wise Sum : ");
+        levelWiseSum(root);
+
+        System.out.print("\nIterative Traversal : ");
+        iterativeTraversal(root);
     }
 }
