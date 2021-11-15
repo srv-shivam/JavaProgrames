@@ -270,9 +270,36 @@ public class BinaryTree {
         System.out.println("PostOrder : " + postOrder);
     }
 
+    static void levelWiseGreater(Node root) {
+        if (root == null) return;
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(root);
+        int a = 1;
+
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            int greater = queue.peek().data;
+
+            for (int i = 0; i < count; i++) {
+                Node current = queue.remove();
+                greater = Math.max(current.data, greater);
+
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+            }
+            System.out.println("Level " + a + " -> " + greater);
+            ++a;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         // Integer array of nodes to create Binary Tree
-        Integer[] nodes = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] nodes = {50, 25, 92, null, null, 37, 70, null, null, null, 75, 62, null, 30, null, null, 87, null, null};
 
         constructBinaryTree(nodes);
         System.out.println("Binary Tree in Euler-> ");
@@ -300,5 +327,8 @@ public class BinaryTree {
 
         System.out.print("\nIterative Traversal : ");
         iterativeTraversal(root);
+
+        System.out.println("\nLevelWise Greater Element : ");
+        levelWiseGreater(root);
     }
 }
