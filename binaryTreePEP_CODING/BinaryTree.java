@@ -1,12 +1,11 @@
 package binaryTreePEP_CODING;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class BinaryTree {
 
     private static Node root;
+    private static ArrayList<Integer> path;
 
     BinaryTree() {
         root = null;
@@ -297,7 +296,103 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Method to find given element in Binary Tree
+     *
+     * @param node
+     * @param data
+     * @return true|false
+     */
+    static boolean findElementInBinaryTree(Node node, int data) {
+
+        if (node == null) {
+            return false;
+        }
+        if (node.data == data) {
+            return true;
+        }
+
+        boolean leftChild = findElementInBinaryTree(node.left, data);
+        if (leftChild) return true;
+
+        boolean rightChild = findElementInBinaryTree(node.right, data);
+        if (rightChild) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Method to find the path from the given node to the root of th Binary Tree
+     *
+     * @param node
+     * @param data
+     * @return true|false
+     */
+    static boolean pathFromRootToNode(Node node, int data) {
+
+        if (node == null) {
+            return false;
+        }
+
+        if (node.data == data) {
+            path.add(node.data);
+            return true;
+        }
+
+        boolean toLeftChild = pathFromRootToNode(node.left, data);
+        if (toLeftChild) {
+            path.add(node.data);
+            return true;
+        }
+
+        boolean toRightChild = pathFromRootToNode(node.right, data);
+        if (toRightChild) {
+            path.add(node.data);
+            return true;
+        }
+
+        return false;
+    }
+
+    static void printKthLevel(Node node, int k) {
+
+        if (node == null) return;
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        int level = 0;
+        boolean flag = false;
+
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            ++level;
+            if (flag) return;
+
+            for (int i = 0; i < count; i++) {
+                Node current = queue.remove();
+
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+
+                if (level == k) {
+                    System.out.print(current.data + " ");
+                    flag = true;
+                }
+            }
+        }
+
+    }
+
     public static void main(String[] args) throws Exception {
+
+        Scanner sc = new Scanner(System.in);
+
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {50, 25, 92, null, null, 37, 70, null, null, null, 75, 62, null, 30, null, null, 87, null, null};
 
@@ -330,5 +425,29 @@ public class BinaryTree {
 
         System.out.println("\nLevelWise Greater Element : ");
         levelWiseGreater(root);
+
+        System.out.println("\nFind an element in Binary Tree :-> ");
+        System.out.print("Enter number to search : ");
+        int data = sc.nextInt();
+        if (findElementInBinaryTree(BinaryTree.root, data)) {
+            System.out.print("Found Element " + data + " in Binary Tree!!");
+        } else {
+            System.out.print("Not Found Element " + data + " in Binary Tree!!");
+        }
+
+        path = new ArrayList<>();
+
+        System.out.println("\nFind Path from NODE to ROOT : ");
+        if (pathFromRootToNode(BinaryTree.root, data)) {
+            System.out.println("\nPath is : " + path);
+        } else {
+            System.out.println("Element does not exist!!");
+        }
+
+        System.out.println("\nPrinting all Kth Level elements : ");
+        System.out.print("Enter Level to print : ");
+        int k = sc.nextInt();
+        printKthLevel(BinaryTree.root, k);
+
     }
 }
