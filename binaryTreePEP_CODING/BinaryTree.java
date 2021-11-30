@@ -6,6 +6,7 @@ public class BinaryTree {
 
     private static Node root;
     private static ArrayList<Integer> path;
+    private static ArrayList<Node> path2;
 
     BinaryTree() {
         root = null;
@@ -389,12 +390,86 @@ public class BinaryTree {
 
     }
 
+    static void printKLevels(Node node, int k) {
+
+        if (node == null || k < 0) return;
+
+        if (k == 0) {
+            System.out.print(node.data + " ");
+        }
+
+        printKLevels(node.left, k - 1);
+        printKLevels(node.right, k - 1);
+    }
+
+    /******************************************************************************************************************/
+
+    static boolean pathFromRootToNode2(Node node, int data) {
+
+        if (node == null) {
+            return false;
+        }
+
+        if (node.data == data) {
+            path2.add(node);
+            return true;
+        }
+
+        boolean toLeftChild = pathFromRootToNode2(node.left, data);
+        if (toLeftChild) {
+            path2.add(node);
+            return true;
+        }
+
+        boolean toRightChild = pathFromRootToNode2(node.right, data);
+        if (toRightChild) {
+            path2.add(node);
+            return true;
+        }
+
+        return false;
+    }
+
+    static void printKLevelsDown(Node node, int k, Node blocker) {
+
+        if (node == null || k < 0 || blocker == node) return;
+
+        if (k == 0) {
+            System.out.print(node.data + " ");
+        }
+
+        printKLevelsDown(node.left, k - 1, blocker);
+        printKLevelsDown(node.right, k - 1, blocker);
+    }
+
+    static void printKNodesFar(Node node, int data, int k) {
+
+        // This part will find the path from the given data to the root node
+        // path will be saved into path ArrayList
+        path2 = new ArrayList<>();
+        pathFromRootToNode2(node, data);
+
+        for (int i = 0; i < path2.size(); ++i) {
+            printKLevelsDown(path2.get(i), k - i - 1, i == 0 ? null : path2.get(i - 1));
+        }
+
+    }
+
+    /*******************************************************************************************************************/
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         // Integer array of nodes to create Binary Tree
-        Integer[] nodes = {50, 25, 92, null, null, 37, 70, null, null, null, 75, 62, null, 30, null, null, 87, null, null};
+        Integer[] nodes = {
+                1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
+                null, null, 9, 14, 16, 20, 29, null, null, 30, null, null,
+                21, 22, null, null, 23, null, null, 17, 31, 28, null, null,
+                27, null, null, null, 13, 18, 24, null, null, 25, null, null,
+                19, null, null, 3, 10, null, null, 11, null, null
+                /*,70, null, null, null, 75, 62, null, 30, null, null, 87, null, null*/
+        };
 
         constructBinaryTree(nodes);
         System.out.println("Binary Tree in Euler-> ");
@@ -448,6 +523,11 @@ public class BinaryTree {
         System.out.print("Enter Level to print : ");
         int k = sc.nextInt();
         printKthLevel(BinaryTree.root, k);
+        System.out.println();
+        printKLevels(BinaryTree.root, --k); // another way to print Kth level of Binary tree
+
+        System.out.println("\nPrinting all nodes K far away from given Node");
+        printKNodesFar(BinaryTree.root, data, k);
 
     }
 }
