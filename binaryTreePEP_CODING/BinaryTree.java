@@ -457,6 +457,31 @@ public class BinaryTree {
 
     /*******************************************************************************************************************/
 
+    /**
+     * Method to print the leftView of the Binary Tree
+     *
+     * @param node root of the Binary Tree
+     */
+    static void printLeftView(Node node) {
+
+        if (node == null) return;
+
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.addFirst(node);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            System.out.print(queue.getFirst().data + " ");
+
+            while (size-- > 0) {
+                Node current = queue.removeFirst();
+                if (current.left != null) queue.addLast(current.left);
+                if (current.right != null) queue.addLast(current.right);
+            }
+        }
+    }
+
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -528,6 +553,9 @@ public class BinaryTree {
 
         System.out.println("\n\nPrinting all nodes K far away from given Node " + data);
         printKNodesFar(BinaryTree.root, data, k);
+
+        System.out.print("\nPrint Left View of the Binary Tree ");
+        printLeftView(BinaryTree.root);
 
     }
 }
