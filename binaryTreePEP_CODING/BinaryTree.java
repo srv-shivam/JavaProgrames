@@ -300,8 +300,8 @@ public class BinaryTree {
     /**
      * Method to find given element in Binary Tree
      *
-     * @param node
-     * @param data
+     * @param node root of Binary tree
+     * @param data element to search in the Binary Tree
      * @return true|false
      */
     static boolean findElementInBinaryTree(Node node, int data) {
@@ -327,8 +327,8 @@ public class BinaryTree {
     /**
      * Method to find the path from the given node to the root of th Binary Tree
      *
-     * @param node
-     * @param data
+     * @param node root of the Binary Tree
+     * @param data element of whose path from root is to search
      * @return true|false
      */
     static boolean pathFromRootToNode(Node node, int data) {
@@ -363,7 +363,7 @@ public class BinaryTree {
 
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
-        int level = 0;
+        int level = -1;
         boolean flag = false;
 
         while (!queue.isEmpty()) {
@@ -450,7 +450,7 @@ public class BinaryTree {
         pathFromRootToNode2(node, data);
 
         for (int i = 0; i < path2.size(); ++i) {
-            printKLevelsDown(path2.get(i), k - i - 1, i == 0 ? null : path2.get(i - 1));
+            printKLevelsDown(path2.get(i), k - i, i == 0 ? null : path2.get(i - 1));
         }
 
     }
@@ -524,9 +524,9 @@ public class BinaryTree {
         int k = sc.nextInt();
         printKthLevel(BinaryTree.root, k);
         System.out.println();
-        printKLevels(BinaryTree.root, --k); // another way to print Kth level of Binary tree
+        printKLevels(BinaryTree.root, k); // another way to print Kth level of Binary tree
 
-        System.out.println("\nPrinting all nodes K far away from given Node");
+        System.out.println("\n\nPrinting all nodes K far away from given Node " + data);
         printKNodesFar(BinaryTree.root, data, k);
 
     }
