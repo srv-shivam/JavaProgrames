@@ -481,6 +481,25 @@ public class BinaryTree {
         }
     }
 
+    static void printRightView(Node node) {
+
+        if (node == null) return;
+
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.addFirst(node);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            Node current = null;
+            while (size-- > 0) {
+                current = queue.remove();
+                if (current.left != null) queue.addLast(current.left);
+                if (current.right != null) queue.addLast(current.right);
+            }
+            System.out.print(current.data + " ");
+        }
+    }
+
 
     public static void main(String[] args) throws Exception {
 
@@ -556,6 +575,9 @@ public class BinaryTree {
 
         System.out.print("\nPrint Left View of the Binary Tree ");
         printLeftView(BinaryTree.root);
+
+        System.out.print("\nPrint Right View of the Binary Tree ");
+        printRightView(BinaryTree.root);
 
     }
 }
