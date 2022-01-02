@@ -7,6 +7,7 @@ public class BinaryTree {
     private static Node root;
     private static ArrayList<Integer> path;
     private static ArrayList<Node> path2;
+    private static Map<Integer, Integer> map;
 
     BinaryTree() {
         root = null;
@@ -455,7 +456,7 @@ public class BinaryTree {
 
     }
 
-    /*******************************************************************************************************************/
+    /*****************************************************************************************************************/
 
     /**
      * Method to print the leftView of the Binary Tree
@@ -481,6 +482,12 @@ public class BinaryTree {
         }
     }
 
+    /**
+     * Method to print the right view of the Binary Tree
+     *
+     * @param node root of the Binary Tree
+     */
+
     static void printRightView(Node node) {
 
         if (node == null) return;
@@ -500,6 +507,47 @@ public class BinaryTree {
         }
     }
 
+    static void printTopView(Node node) {
+
+        if (node == null) return;
+        LinkedList<Pair> queue = new LinkedList<>();
+        map = new HashMap<>();
+
+        Pair pair = new Pair(node, 0);
+        queue.addFirst(pair);
+        int line = 0;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+
+            while (size-- > 0) {
+                Pair current = queue.removeFirst();
+                if (!map.containsKey(current.state)) {
+                    map.put(current.state, current.node.data);
+                }
+
+                /**
+                 * Getting logical error in value of "line"
+                 */
+                if (current.node.left != null) {
+                    line = current.state - 1;
+                    pair = new Pair(current.node.left, line);
+                    queue.addLast(pair);
+                }
+
+                if (current.node.right != null) {
+                    line = current.state + 1;
+                    pair = new Pair(current.node.right, line);
+                    queue.addLast(pair);
+                }
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            System.out.print(entry.getValue() + " ");
+        }
+    }
+
 
     public static void main(String[] args) throws Exception {
 
@@ -507,12 +555,13 @@ public class BinaryTree {
 
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {
-                1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
+                10, 8, 6, null, 7, 5, null, null, 4, null, null, 9, null, null,
+                12, 11, null, null, 13, null, null
+                /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
                 null, null, 9, 14, 16, 20, 29, null, null, 30, null, null,
                 21, 22, null, null, 23, null, null, 17, 31, 28, null, null,
                 27, null, null, null, 13, 18, 24, null, null, 25, null, null,
-                19, null, null, 3, 10, null, null, 11, null, null
-                /*,70, null, null, null, 75, 62, null, 30, null, null, 87, null, null*/
+                19, null, null, 3, 10, null, null, 11, null, null*/
         };
 
         constructBinaryTree(nodes);
@@ -578,6 +627,9 @@ public class BinaryTree {
 
         System.out.print("\nPrint Right View of the Binary Tree ");
         printRightView(BinaryTree.root);
+
+        System.out.print("\nPrint Top View of the Binary Tree ");
+        printTopView(BinaryTree.root);
 
     }
 }
