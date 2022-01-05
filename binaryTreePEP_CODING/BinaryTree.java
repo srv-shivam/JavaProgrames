@@ -7,7 +7,6 @@ public class BinaryTree {
     private static Node root;
     private static ArrayList<Integer> path;
     private static ArrayList<Node> path2;
-    private static Map<Integer, Integer> map;
 
     BinaryTree() {
         root = null;
@@ -511,7 +510,7 @@ public class BinaryTree {
 
         if (node == null) return;
         LinkedList<Pair> queue = new LinkedList<>();
-        map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         Pair pair = new Pair(node, 0);
         queue.addFirst(pair);
@@ -526,9 +525,42 @@ public class BinaryTree {
                     map.put(current.state, current.node.data);
                 }
 
-                /**
-                 * Getting logical error in value of "line"
-                 */
+                if (current.node.left != null) {
+                    line = current.state - 1;
+                    pair = new Pair(current.node.left, line);
+                    queue.addLast(pair);
+                }
+
+                if (current.node.right != null) {
+                    line = current.state + 1;
+                    pair = new Pair(current.node.right, line);
+                    queue.addLast(pair);
+                }
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            System.out.print(entry.getValue() + " ");
+        }
+    }
+
+    static void printBottomView(Node node) {
+
+        if (node == null) return;
+        LinkedList<Pair> queue = new LinkedList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+
+        Pair pair = new Pair(node, 0);
+        queue.addFirst(pair);
+        int line;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+
+            while (size-- > 0) {
+                Pair current = queue.removeFirst();
+                map.put(current.state, current.node.data);
+
                 if (current.node.left != null) {
                     line = current.state - 1;
                     pair = new Pair(current.node.left, line);
@@ -630,6 +662,9 @@ public class BinaryTree {
 
         System.out.print("\nPrint Top View of the Binary Tree ");
         printTopView(BinaryTree.root);
+
+        System.out.print("\nPrint Bottom View of the Binary Tree ");
+        printBottomView(BinaryTree.root);
 
     }
 }
