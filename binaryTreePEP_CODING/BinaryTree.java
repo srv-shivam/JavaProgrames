@@ -580,6 +580,48 @@ public class BinaryTree {
         }
     }
 
+    public static Node leftClonedTree(Node node) {
+
+        if (node == null) return null;
+
+        Node leftNode = leftClonedTree(node.left);
+        Node rightNode = leftClonedTree(node.right);
+
+        Node newNode = new Node(node.data);
+        newNode.left = leftNode;
+        node.left = newNode;
+        node.right = rightNode;
+
+        return node;
+    }
+
+    public static Node rightClonedTree(Node node) {
+
+        if (node == null) return null;
+
+        Node leftNode = rightClonedTree(node.left);
+        Node rightNode = rightClonedTree(node.right);
+
+        node.left = leftNode;
+        Node newNode = new Node(node.data);
+        newNode.right = rightNode;
+        node.right = newNode;
+
+        return node;
+    }
+
+    public static Node backFromLeftCloned(Node node) {
+
+        if (node == null) return null;
+
+        Node nodeLeft = backFromLeftCloned(node.left.left);
+        Node nodeRight = backFromLeftCloned(node.right);
+
+        node.left = nodeLeft;
+        node.right = nodeRight;
+
+        return node;
+    }
 
     public static void main(String[] args) throws Exception {
 
@@ -665,6 +707,25 @@ public class BinaryTree {
 
         System.out.print("\nPrint Bottom View of the Binary Tree ");
         printBottomView(BinaryTree.root);
+
+        /*
+         * Vice versa use of lefCloned method and rightCloned method
+         * for better understanding
+         */
+        System.out.println("\nLeft Cloned Binary Tree : ");
+        leftClonedTree(BinaryTree.root);
+
+//        System.out.println("\nRight Cloned Binary Tree : ");
+//        rightClonedTree(BinaryTree.root);
+
+        System.out.println("\nNew left cloned tree : ");
+        displayTree(BinaryTree.root);
+
+        System.out.println("\nBack from Left Cloned Binary Tree : ");
+        backFromLeftCloned(BinaryTree.root);
+
+        System.out.println("\nNew left cloned tree : ");
+        displayTree(BinaryTree.root);
 
     }
 }
