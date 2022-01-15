@@ -455,8 +455,6 @@ public class BinaryTree {
 
     }
 
-    /*****************************************************************************************************************/
-
     /**
      * Method to print the leftView of the Binary Tree
      *
@@ -514,7 +512,7 @@ public class BinaryTree {
 
         Pair pair = new Pair(node, 0);
         queue.addFirst(pair);
-        int line = 0;
+        int line;
 
         while (!queue.isEmpty()) {
             int size = queue.size();
