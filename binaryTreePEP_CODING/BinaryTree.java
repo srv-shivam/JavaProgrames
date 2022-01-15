@@ -635,6 +635,18 @@ public class BinaryTree {
         printSingleChildNode(node.right);
     }
 
+    public static Node removeLeafNode(Node node) {
+
+        if (node == null) return null;
+
+        if (node.left == null && node.right == null) return null;
+
+        node.left = removeLeafNode(node.left);
+        node.right = removeLeafNode(node.right);
+
+        return node;
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -741,6 +753,10 @@ public class BinaryTree {
 
         System.out.println("\nPrint single child nodes : ");
         printSingleChildNode(BinaryTree.root);
+
+        System.out.println("\nBinary Tree after leave nodes removal : ");
+        removeLeafNode(BinaryTree.root);
+        displayTree(BinaryTree.root);
 
     }
 }
