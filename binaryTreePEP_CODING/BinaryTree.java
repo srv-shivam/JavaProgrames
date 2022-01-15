@@ -621,6 +621,20 @@ public class BinaryTree {
         return node;
     }
 
+    public static void printSingleChildNode(Node node) {
+
+        if (node == null) return;
+
+        if (node.left == null && node.right != null) {
+            System.out.print(node.right.data + " ");
+        } else if (node.right == null && node.left != null) {
+            System.out.print(node.left.data + " ");
+        }
+
+        printSingleChildNode(node.left);
+        printSingleChildNode(node.right);
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -724,6 +738,9 @@ public class BinaryTree {
 
         System.out.println("\nNew left cloned tree : ");
         displayTree(BinaryTree.root);
+
+        System.out.println("\nPrint single child nodes : ");
+        printSingleChildNode(BinaryTree.root);
 
     }
 }
