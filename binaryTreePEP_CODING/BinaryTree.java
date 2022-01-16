@@ -2,11 +2,26 @@ package binaryTreePEP_CODING;
 
 import java.util.*;
 
+/**
+ * Binary Tree in use
+ * <p>
+ * 10
+ * /  \
+ * 8     12
+ * /  \   /  \
+ * 6   9  11  13
+ * \
+ * 7
+ * / \
+ * 5   4
+ */
+
 public class BinaryTree {
 
     private static Node root;
     private static ArrayList<Integer> path;
     private static ArrayList<Node> path2;
+    private static int diameter = 0;
 
     BinaryTree() {
         root = null;
@@ -180,8 +195,7 @@ public class BinaryTree {
      * IMPORTANT: RPC (Remove node, print that node, then add child of removed node)
      */
     static void levelOrderTraversal(Node node) {
-        if (node == null)
-            return;
+        if (node == null) return;
 
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
@@ -205,8 +219,7 @@ public class BinaryTree {
     }
 
     static void levelWiseSum(Node node) {
-        if (node == null)
-            return;
+        if (node == null) return;
 
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
@@ -227,8 +240,7 @@ public class BinaryTree {
     }
 
     static void iterativeTraversal(Node node) {
-        if (node == null)
-            return;
+        if (node == null) return;
 
         StringBuilder preOrder = new StringBuilder();
         StringBuilder inOrder = new StringBuilder();
@@ -647,20 +659,29 @@ public class BinaryTree {
         return node;
     }
 
+    public static int getDiameter(Node node) {
+
+        if (node == null) return 0;
+
+        int lDiameter = getDiameter(node.left);  //basically, it will calculate left height for particular node
+        int rDiameter = getDiameter(node.right); //basically, it will calculate right height for particular node
+
+        diameter = Math.max(diameter, (1 + lDiameter + rDiameter));
+
+        return (Math.max(lDiameter, rDiameter) + 1);
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         // Integer array of nodes to create Binary Tree
-        Integer[] nodes = {
-                10, 8, 6, null, 7, 5, null, null, 4, null, null, 9, null, null,
-                12, 11, null, null, 13, null, null
+        Integer[] nodes = {10, 8, 6, null, 7, 5, null, null, 4, null, null, 9, null, null, 12, 11, null, null, 13, null, null
                 /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
                 null, null, 9, 14, 16, 20, 29, null, null, 30, null, null,
                 21, 22, null, null, 23, null, null, 17, 31, 28, null, null,
                 27, null, null, null, 13, 18, 24, null, null, 25, null, null,
-                19, null, null, 3, 10, null, null, 11, null, null*/
-        };
+                19, null, null, 3, 10, null, null, 11, null, null*/};
 
         constructBinaryTree(nodes);
         System.out.println("Binary Tree in Euler-> ");
@@ -670,6 +691,8 @@ public class BinaryTree {
         System.out.println("Sum of nodes of Binary Tree : " + sum(root));
         System.out.println("Maximum node of Binary Tree : " + max(root));
         System.out.println("Height of Binary Tree : " + height(root));
+        getDiameter(root);
+        System.out.println("Diameter of Binary Tree : " + BinaryTree.diameter);
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
@@ -710,7 +733,7 @@ public class BinaryTree {
             System.out.println("Element does not exist!!");
         }
 
-        System.out.println("\nPrinting all Kth Level elements : ");
+        System.out.println("\nPrinting all Kth Level elements from root : ");
         System.out.print("Enter Level to print : ");
         int k = sc.nextInt();
         printKthLevel(BinaryTree.root, k);
