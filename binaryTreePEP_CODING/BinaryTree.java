@@ -5,15 +5,15 @@ import java.util.*;
 /**
  * Binary Tree in use
  * <p>
- * 10
- * /  \
- * 8     12
- * /  \   /  \
- * 6   9  11  13
- * \
- * 7
- * / \
- * 5   4
+ *              10
+ *             /  \
+ *           8     12
+ *         /  \   /  \
+ *        6   9  11  13
+ *        \
+ *         7
+ *        / \
+ *       5   4
  */
 
 public class BinaryTree {
@@ -659,6 +659,18 @@ public class BinaryTree {
         return node;
     }
 
+    public static int countLeaves(Node node) {
+
+        if (node == null) return 0;
+
+        if (node.left == null && node.right == null) return 1;
+
+        int leftCount = countLeaves(node.left);
+        int rightCount = countLeaves(node.right);
+
+        return leftCount + rightCount;
+    }
+
     public static int getDiameter(Node node) {
 
         if (node == null) return 0;
@@ -693,6 +705,7 @@ public class BinaryTree {
         System.out.println("Height of Binary Tree : " + height(root));
         getDiameter(root);
         System.out.println("Diameter of Binary Tree : " + BinaryTree.diameter);
+        System.out.println("Number of leaves in Binary Tree : " + countLeaves(root));
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
