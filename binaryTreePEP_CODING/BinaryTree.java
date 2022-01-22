@@ -5,15 +5,15 @@ import java.util.*;
 /**
  * Binary Tree in use
  * <p>
- *              10
- *             /  \
- *           8     12
- *         /  \   /  \
- *        6   9  11  13
- *        \
- *         7
- *        / \
- *       5   4
+ * 10
+ * /  \
+ * 8     12
+ * /  \   /  \
+ * 6   9  11  13
+ * \
+ * 7
+ * / \
+ * 5   4
  */
 
 public class BinaryTree {
@@ -22,6 +22,7 @@ public class BinaryTree {
     private static ArrayList<Integer> path;
     private static ArrayList<Node> path2;
     private static int diameter = 0;
+    private static int countOfTwoChildNode = 0;
 
     BinaryTree() {
         root = null;
@@ -683,6 +684,17 @@ public class BinaryTree {
         return (Math.max(lDiameter, rDiameter) + 1);
     }
 
+    public static void getCountOfDoubleChildNode(Node node) {
+        if (node == null) return;
+
+        getCountOfDoubleChildNode(node.left);
+        getCountOfDoubleChildNode(node.right);
+
+        if (node.left != null && node.right != null) {
+            ++countOfTwoChildNode;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -706,6 +718,8 @@ public class BinaryTree {
         getDiameter(root);
         System.out.println("Diameter of Binary Tree : " + BinaryTree.diameter);
         System.out.println("Number of leaves in Binary Tree : " + countLeaves(root));
+        getCountOfDoubleChildNode(BinaryTree.root);
+        System.out.println("Nodes with two children : " + BinaryTree.countOfTwoChildNode);
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
@@ -793,6 +807,7 @@ public class BinaryTree {
         System.out.println("\nBinary Tree after leave nodes removal : ");
         removeLeafNode(BinaryTree.root);
         displayTree(BinaryTree.root);
+
 
     }
 }
