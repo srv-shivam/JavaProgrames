@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Binary Tree in use
- * <p>
+ *
  * 10
  * /  \
  * 8     12
@@ -807,7 +807,5 @@ public class BinaryTree {
         System.out.println("\nBinary Tree after leave nodes removal : ");
         removeLeafNode(BinaryTree.root);
         displayTree(BinaryTree.root);
-
-
     }
 }
