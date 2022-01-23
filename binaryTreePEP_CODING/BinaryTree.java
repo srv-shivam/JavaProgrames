@@ -756,6 +756,23 @@ public class BinaryTree {
         mirrorImage(node.right);
     }
 
+    public static boolean isSymmetric(Node node) {
+        if (node == null)
+            return true;
+        else {
+            return areSymmetric(node.left, node.right);
+        }
+    }
+    private static boolean areSymmetric(Node root1, Node root2) {
+        if (root1 == null && root2 == null)
+            return true;
+//        assert root1 != null;
+        if ((root1.left != null && root2.right == null) || (root1.left == null && root2.right != null))
+            return false;
+
+        return ((root1.data == root2.data) && (areSymmetric(root1.left, root2.right)) && areSymmetric(root1.right, root2.left));
+    }
+
 
     public static void main(String[] args) throws Exception {
 
