@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Binary Tree in use
- *
+ * <p>
  * 10
  * /  \
  * 8     12
@@ -695,12 +695,60 @@ public class BinaryTree {
         }
     }
 
+    public static void boundaryTraversal(Node node) {
+
+        if (node == null) return;
+
+        printLeftBoundary(node);
+        printLeaveBoundary(node);
+        printRightBoundary(node.right);
+    }
+
+    /*****************************************************************/
+    private static void printLeftBoundary(Node node) {
+        if (node == null) return;
+        else if (node.left == null && node.right == null) return;
+        else {
+            System.out.print(node.data + " ");
+            printLeftBoundary(node.left);
+            if (node.left == null && node.right != null)
+                printLeftBoundary(node.right);
+
+        }
+    }
+
+    private static void printLeaveBoundary(Node node) {
+        if (node == null) return;
+        if (node.left == null && node.right == null) {
+            System.out.print(node.data + " ");
+        }
+        printLeaveBoundary(node.left);
+        printLeaveBoundary(node.right);
+    }
+
+    private static void printRightBoundary(Node node) {
+        if (node == null) return;
+        else if (node.left == null && node.right == null) return;
+        else {
+            printRightBoundary(node.right);
+            if (node.right == null && node.left != null)
+                printRightBoundary(node.left);
+            System.out.print(node.data + " ");
+        }
+    }
+
+    /********************************************************************/
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         // Integer array of nodes to create Binary Tree
-        Integer[] nodes = {10, 8, 6, null, 7, 5, null, null, 4, null, null, 9, null, null, 12, 11, null, null, 13, null, null
+        Integer[] nodes = {
+                1, 2, 4, 8, 18, null, null, null, 9, null, null,
+                5, 6, 16, null, null, 17, null, null, 7, null, null,
+                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null
+                /*10, 8, 6, null, 7, 5, null, null, 4, null, null,
+                9, null, null, 12, 11, null, null, 13, null, null*/
                 /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
                 null, null, 9, 14, 16, 20, 29, null, null, 30, null, null,
                 21, 22, null, null, 23, null, null, 17, 31, 28, null, null,
@@ -720,6 +768,8 @@ public class BinaryTree {
         System.out.println("Number of leaves in Binary Tree : " + countLeaves(root));
         getCountOfDoubleChildNode(BinaryTree.root);
         System.out.println("Nodes with two children : " + BinaryTree.countOfTwoChildNode);
+        System.out.println("Boundary Nodes of Binary Tree : ");
+        boundaryTraversal(BinaryTree.root);
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
