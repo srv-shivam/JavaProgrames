@@ -744,18 +744,16 @@ public class BinaryTree {
      * @param node node
      * @return node
      */
-    public static Node mirrorImage(Node node) {
+    public static void mirrorImage(Node node) {
 
-        if (node == null) return null;
-
-        Node leftNode = mirrorImage(node.left);
-        Node rightNode = mirrorImage(node.right);
+        if (node == null) return;
 
         Node temp = node.left;
         node.left = node.right;
         node.right = temp;
 
-        return node;
+        mirrorImage(node.left);
+        mirrorImage(node.right);
     }
 
 
