@@ -713,7 +713,6 @@ public class BinaryTree {
             printLeftBoundary(node.left);
             if (node.left == null && node.right != null)
                 printLeftBoundary(node.right);
-
         }
     }
 
@@ -738,6 +737,28 @@ public class BinaryTree {
     }
 
     /********************************************************************/
+
+    /**
+     * Method to convert the Binary Tree to it's Mirror Image
+     *
+     * @param node node
+     * @return node
+     */
+    public static Node mirrorImage(Node node) {
+
+        if (node == null) return null;
+
+        Node leftNode = mirrorImage(node.left);
+        Node rightNode = mirrorImage(node.right);
+
+        Node temp = node.left;
+        node.left = node.right;
+        node.right = temp;
+
+        return node;
+    }
+
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -831,6 +852,12 @@ public class BinaryTree {
 
         System.out.print("\nPrint Bottom View of the Binary Tree ");
         printBottomView(BinaryTree.root);
+
+        System.out.println("\nMirror Image of Binary Tree ");
+        mirrorImage(BinaryTree.root);
+        levelOrderTraversal(BinaryTree.root);
+        System.out.println();
+        displayTree(BinaryTree.root);
 
         /*
          * Vice versa use of lefCloned method and rightCloned method
