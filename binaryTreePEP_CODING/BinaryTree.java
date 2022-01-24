@@ -763,10 +763,11 @@ public class BinaryTree {
             return areSymmetric(node.left, node.right);
         }
     }
+
     private static boolean areSymmetric(Node root1, Node root2) {
         if (root1 == null && root2 == null)
             return true;
-//        assert root1 != null;
+        assert root1 != null;
         if ((root1.left != null && root2.right == null) || (root1.left == null && root2.right != null))
             return false;
 
