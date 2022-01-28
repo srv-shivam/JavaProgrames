@@ -774,6 +774,35 @@ public class BinaryTree {
         return ((root1.data == root2.data) && (areSymmetric(root1.left, root2.right)) && areSymmetric(root1.right, root2.left));
     }
 
+    private static int helperCountGoodNodes(Node node, int max) {
+        if (node == null)
+            return 0;
+
+        max = Math.max(max, node.data);
+        //calling left part of tree for the count of good nodes in left subtree
+        int leftCount = helperCountGoodNodes(node.left, max);
+        //calling right part of tree for the count of the good nodes in right subtree
+        int rightCount = helperCountGoodNodes(node.right, max);
+
+        if (node.data >= max)
+            return (1 + leftCount + rightCount);
+        else
+            return (leftCount + rightCount);
+    }
+
+    /**
+     * @param node root
+     * @return count of good nodes
+     */
+    public static int countGoodNodes(Node node) {
+        if (node == null)
+            return 0;
+        // As, root node is always a good node
+        if (node.left == null && node.right == null)
+            return 1;
+
+        return helperCountGoodNodes(node, Integer.MIN_VALUE);
+    }
 
     public static void main(String[] args) throws Exception {
 
@@ -781,9 +810,10 @@ public class BinaryTree {
 
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {
-                1, 2, 4, 8, 18, null, null, null, 9, null, null,
+                3, 1, 3, null, null, null, 4, 1, null, null, 5, null, null
+                /*1, 2, 4, 8, 18, null, null, null, 9, null, null,
                 5, 6, 16, null, null, 17, null, null, 7, null, null,
-                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null
+                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null*/
                 /*10, 8, 6, null, 7, 5, null, null, 4, null, null,
                 9, null, null, 12, 11, null, null, 13, null, null*/
                 /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
@@ -807,6 +837,8 @@ public class BinaryTree {
         System.out.println("Nodes with two children : " + BinaryTree.countOfTwoChildNode);
         System.out.println("Boundary Nodes of Binary Tree : ");
         boundaryTraversal(BinaryTree.root);
+
+        System.out.println("\nCount of Good Nodes of the Binary Tree : " + countGoodNodes(BinaryTree.root));
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
