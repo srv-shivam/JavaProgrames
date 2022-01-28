@@ -804,16 +804,44 @@ public class BinaryTree {
         return helperCountGoodNodes(node, Integer.MIN_VALUE);
     }
 
+    static int sumOf = 0;
+
+    /**
+     * Method to calculate the sum of the nodes with the even valued parents
+     *
+     * @param node node
+     */
+    public static void sumOfNodesWithEvenValuedParent(Node node) {
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null)
+            return;
+
+        if (node.left != null && node.right != null && (node.data % 2 == 0)) {
+            System.out.println(node.left.data + " <-" + node.data + "-> " + node.right.data);
+            sumOf = sumOf + node.left.data + node.right.data;
+        } else if (node.left != null && (node.data % 2 == 0)) {
+            System.out.println(node.left.data + " <-" + node.data + "-> .");
+            sumOf = sumOf + node.left.data;
+        } else if (node.right != null && (node.data % 2 == 0)) {
+            System.out.println(". <-" + node.data + "-> " + node.right.data);
+            sumOf = sumOf + node.right.data;
+        }
+
+        sumOfNodesWithEvenValuedParent(node.left);
+        sumOfNodesWithEvenValuedParent(node.right);
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
 
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {
-                3, 1, 3, null, null, null, 4, 1, null, null, 5, null, null
-                /*1, 2, 4, 8, 18, null, null, null, 9, null, null,
+                /*3, 1, 3, null, null, null, 4, 1, null, null, 5, null, null*/
+                1, 2, 4, 8, 18, null, null, null, 9, null, null,
                 5, 6, 16, null, null, 17, null, null, 7, null, null,
-                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null*/
+                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null
                 /*10, 8, 6, null, 7, 5, null, null, 4, null, null,
                 9, null, null, 12, 11, null, null, 13, null, null*/
                 /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
@@ -839,6 +867,9 @@ public class BinaryTree {
         boundaryTraversal(BinaryTree.root);
 
         System.out.println("\nCount of Good Nodes of the Binary Tree : " + countGoodNodes(BinaryTree.root));
+
+        sumOfNodesWithEvenValuedParent(BinaryTree.root);
+        System.out.println("Sum of nodes with even valued parent : " + sumOf);
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
