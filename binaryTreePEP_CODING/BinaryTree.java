@@ -832,6 +832,18 @@ public class BinaryTree {
         sumOfNodesWithEvenValuedParent(node.right);
     }
 
+    public static int minHeightOfTree(Node node) {
+
+        //When node == null we should return 0 as ideally, but for this logic we can
+        //perform node == null condition in the driver function and directly return 0
+        //at that time
+        if (node == null)
+            return Integer.MAX_VALUE;
+        if (node.left == null && node.right == null)
+            return 1;
+        return (1 + Math.min(minHeightOfTree(node.left), minHeightOfTree(node.right)));
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -867,6 +879,8 @@ public class BinaryTree {
         boundaryTraversal(BinaryTree.root);
 
         System.out.println("\nCount of Good Nodes of the Binary Tree : " + countGoodNodes(BinaryTree.root));
+
+        System.out.println("\nMinimum height of the Binary Tree : " + minHeightOfTree(BinaryTree.root));
 
         sumOfNodesWithEvenValuedParent(BinaryTree.root);
         System.out.println("Sum of nodes with even valued parent : " + sumOf);
