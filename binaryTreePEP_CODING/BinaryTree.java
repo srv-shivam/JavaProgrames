@@ -844,6 +844,21 @@ public class BinaryTree {
         return (1 + Math.min(minHeightOfTree(node.left), minHeightOfTree(node.right)));
     }
 
+    public static void printAllRootToNodePath(Node node, ArrayList<Integer> path) {
+
+        if (node == null)
+            return;
+        path.add(node.data);
+
+        if (node.left == null && node.right == null) {
+            System.out.println(path);
+        } else {
+            printAllRootToNodePath(node.left, path);
+            printAllRootToNodePath(node.right, path);
+        }
+        path.remove(path.size() - 1);
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -884,6 +899,9 @@ public class BinaryTree {
 
         sumOfNodesWithEvenValuedParent(BinaryTree.root);
         System.out.println("Sum of nodes with even valued parent : " + sumOf);
+
+        System.out.println("\nAll Paths from root to leaf : ");
+        printAllRootToNodePath(BinaryTree.root, new ArrayList<Integer>());
 
         System.out.print("\nPreOrder Traversal of Binary tree ");
         preOrder(root);
