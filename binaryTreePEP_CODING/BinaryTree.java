@@ -767,8 +767,8 @@ public class BinaryTree {
     private static boolean areSymmetric(Node root1, Node root2) {
         if (root1 == null && root2 == null)
             return true;
-        assert root1 != null;
-        if ((root1.left != null && root2.right == null) || (root1.left == null && root2.right != null))
+
+        if (root1 == null || root2 == null)
             return false;
 
         return ((root1.data == root2.data) && (areSymmetric(root1.left, root2.right)) && areSymmetric(root1.right, root2.left));
