@@ -278,9 +278,9 @@ public class BinaryTree {
             }
         }
 
-        System.out.println("\nPreOrder : " + preOrder);
-        System.out.println("InOrder : " + inOrder);
-        System.out.println("PostOrder : " + postOrder);
+        System.out.println("\nIterative PreOrder Traversal : " + preOrder);
+        System.out.println("Iterative InOrder Traversal : " + inOrder);
+        System.out.println("Iterative PostOrder Traversal : " + postOrder);
     }
 
     static void levelWiseGreater(Node root) {
@@ -865,10 +865,11 @@ public class BinaryTree {
 
         // Integer array of nodes to create Binary Tree
         Integer[] nodes = {
-                /*3, 1, 3, null, null, null, 4, 1, null, null, 5, null, null*/
-                1, 2, 4, 8, 18, null, null, null, 9, null, null,
+                /*1, 2, null, null, 3, null, null*/
+                3, 1, 3, null, null, null, 4, 1, null, null, 5, null, null
+                /*1, 2, 4, 8, 18, null, null, null, 9, null, null,
                 5, 6, 16, null, null, 17, null, null, 7, null, null,
-                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null
+                3, 10, null, null, 11, 13, 15, null, null, 14, null, null, null*/
                 /*10, 8, 6, null, 7, 5, null, null, 4, null, null,
                 9, null, null, 12, 11, null, null, 13, null, null*/
                 /*1, 2, 4, 6, null, null, 7, null, null, 5, 8, 12, null, null, 15,
