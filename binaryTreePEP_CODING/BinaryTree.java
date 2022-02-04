@@ -859,6 +859,26 @@ public class BinaryTree {
         path.remove(path.size() - 1);
     }
 
+    private static int check(Node node) {
+        if (node == null) return 0;
+
+        int lh = check(node.left);
+        int rh = check(node.right);
+
+        if (lh == -1 || rh == -1) return -1;
+        if (Math.abs(lh - rh) > 1) return -1;
+
+        return (1 + Math.max(lh, rh));
+    }
+
+    public static boolean isBalanced(Node node) {
+
+        if (node == null) return false;
+
+        if (check(node) == -1) return false;
+        else return true;
+    }
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -897,6 +917,7 @@ public class BinaryTree {
         System.out.println("\nCount of Good Nodes of the Binary Tree : " + countGoodNodes(BinaryTree.root));
 
         System.out.println("\nMinimum height of the Binary Tree : " + minHeightOfTree(BinaryTree.root));
+        System.out.println("\nIs Binary Tree Balanced: " + isBalanced(BinaryTree.root));
 
         sumOfNodesWithEvenValuedParent(BinaryTree.root);
         System.out.println("Sum of nodes with even valued parent : " + sumOf);
