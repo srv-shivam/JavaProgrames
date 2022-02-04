@@ -875,8 +875,7 @@ public class BinaryTree {
 
         if (node == null) return false;
 
-        if (check(node) == -1) return false;
-        else return true;
+        return check(node) != -1;
     }
 
     public static void main(String[] args) throws Exception {
