@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Problem4 {
 
+    // Time Complexity: O(N)
+    // Space Complexity: O(N)
     static void removeDuplicate(int[] arr) {
 
         int curr = arr[0];
@@ -30,6 +32,26 @@ public class Problem4 {
         }
     }
 
+    // Time Complexity: O(N)
+    // Space Complexity: O(1)
+    static void removeDuplicate2(int[] arr) {
+
+        int pos = 1;
+        int curr = arr[0];
+
+        for (int i=1; i<arr.length; ++i) {
+            if (arr[i] != curr) {
+                curr = arr[i];
+                arr[pos++] = curr;
+            }
+        }
+
+        System.out.print("\nSolution with 2nd method: ");
+        for (int i=0; i< pos; ++i) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -44,5 +66,6 @@ public class Problem4 {
         }
 
         removeDuplicate(arr);
+        removeDuplicate2(arr);
     }
 }
