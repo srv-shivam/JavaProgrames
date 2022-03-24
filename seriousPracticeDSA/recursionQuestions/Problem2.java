@@ -10,12 +10,12 @@ package seriousPracticeDSA.recursionQuestions;
 import java.util.Scanner;
 public class Problem2 {
 
-    static int digitSum(int n, int sum) {
+    static int digitSum(int n) {
 
         if (n < 10) {
-            return sum+n;
+            return n;
         }
-        return digitSum(n/10, sum+(n%10));
+        return n%10 + digitSum(n/10);
     }
 
     public static void main(String[] args) {
@@ -25,6 +25,6 @@ public class Problem2 {
         System.out.print("Enter number: ");
         int n = sc.nextInt();
 
-        System.out.println("Sum of digits is : " + digitSum(n, 0));
+        System.out.println("Sum of digits is : " + digitSum(n));
     }
 }
