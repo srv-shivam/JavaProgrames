@@ -1,6 +1,6 @@
 package seriousPracticeDSA.arraysQuestions;
 
-/**
+/*
  * Program to get the index of first repeating element in an array
  *
  * eg: I/P: arr [1 5 3 4 3 5 6]
