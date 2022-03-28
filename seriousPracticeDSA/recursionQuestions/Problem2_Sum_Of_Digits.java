@@ -8,7 +8,7 @@ package seriousPracticeDSA.recursionQuestions;
  */
 
 import java.util.Scanner;
-public class Problem2 {
+public class Problem2_Sum_Of_Digits {
 
     static int digitSum(int n) {
 

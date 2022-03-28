@@ -10,7 +10,7 @@ package seriousPracticeDSA.recursionQuestions;
 
 import java.util.Scanner;
 
-public class Problem3 {
+public class Problem3_Rope_Cutting_Problem {
 
     // Time Complexity: O(3^n)
     // This code can be optimized using DP

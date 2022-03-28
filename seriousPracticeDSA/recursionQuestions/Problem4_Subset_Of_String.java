@@ -10,7 +10,7 @@ package seriousPracticeDSA.recursionQuestions;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Problem4 {
+public class Problem4_Subset_Of_String {
 
     // This arrayList is used to remove the duplicate subsets to be considered
     // Time Complexity: O(2^N-1)

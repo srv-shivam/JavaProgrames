@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
  * Program to find position of the element in an array using recursion
  */
-public class Problem7 {
+public class Problem7_Binary_Search {
 
     // To apply binary search first array should be sorted
     // Time Complexity: O(Log N)

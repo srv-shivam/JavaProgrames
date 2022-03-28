@@ -6,7 +6,7 @@ package seriousPracticeDSA.recursionQuestions;
 
 import java.util.Scanner;
 
-public class Problem1 {
+public class Problem1_Check_Palindrome {
 
     private static int helper(int n, int rev) {
 

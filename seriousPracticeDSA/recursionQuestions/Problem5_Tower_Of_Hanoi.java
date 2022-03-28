@@ -6,7 +6,7 @@ package seriousPracticeDSA.recursionQuestions;
 
 import java.util.Scanner;
 
-public class Problem5 {
+public class Problem5_Tower_Of_Hanoi {
 
     static void generateMoves(int discs, char start, char auxiliary, char destination) {
 

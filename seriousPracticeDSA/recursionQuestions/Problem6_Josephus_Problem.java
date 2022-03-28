@@ -11,7 +11,7 @@ package seriousPracticeDSA.recursionQuestions;
 
 import java.util.Scanner;
 
-public class Problem6 {
+public class Problem6_Josephus_Problem {
 
     static int jos(int n, int k) {
 

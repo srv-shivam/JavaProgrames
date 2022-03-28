@@ -9,7 +9,7 @@ package seriousPracticeDSA.recursionQuestions;
 
 import java.util.Scanner;
 
-public class Problem8 {
+public class Problem8_Count_Of_Subsets_With_Sum_Equal_To_K {
 
     static int countOfSubsetSum(int[] arr, int n, int sum, int subSetSum) {
 
