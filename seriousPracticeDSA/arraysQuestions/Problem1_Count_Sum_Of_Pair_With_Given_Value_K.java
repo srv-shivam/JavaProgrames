@@ -1,12 +1,12 @@
 package seriousPracticeDSA.arraysQuestions;
 
 /*
- * Count/Find A Pair of numbers in array with given vale K
+ * Count/Find A Pair of numbers in array with given value K
  */
 
 import java.util.*;
 
-public class Problem1 {
+public class Problem1_Count_Sum_Of_Pair_With_Given_Value_K {
 
     // Time Complexity: O(N)
     // Space Complexity: O(N) (Used map)

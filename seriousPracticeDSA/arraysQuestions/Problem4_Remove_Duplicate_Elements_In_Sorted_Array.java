@@ -8,7 +8,7 @@ package seriousPracticeDSA.arraysQuestions;
 
 import java.util.Scanner;
 
-public class Problem4 {
+public class Problem4_Remove_Duplicate_Elements_In_Sorted_Array {
 
     // Time Complexity: O(N)
     // Space Complexity: O(N)

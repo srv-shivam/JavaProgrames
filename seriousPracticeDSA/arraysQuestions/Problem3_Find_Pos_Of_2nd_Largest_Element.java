@@ -5,7 +5,7 @@ package seriousPracticeDSA.arraysQuestions;
  */
 import java.util.Scanner;
 
-public class Problem3 {
+public class Problem3_Find_Pos_Of_2nd_Largest_Element {
 
     static int secondLargestElement(int[] arr) {
 

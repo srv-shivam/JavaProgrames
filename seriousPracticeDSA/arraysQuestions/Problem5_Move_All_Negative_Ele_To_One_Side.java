@@ -8,7 +8,7 @@ package seriousPracticeDSA.arraysQuestions;
  */
 import java.util.Scanner;
 
-public class Problem5 {
+public class Problem5_Move_All_Negative_Ele_To_One_Side {
 
     static void arrange(int[] arr, int n) {
 

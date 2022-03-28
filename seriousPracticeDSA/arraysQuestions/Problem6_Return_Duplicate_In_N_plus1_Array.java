@@ -8,7 +8,7 @@ package seriousPracticeDSA.arraysQuestions;
  */
 import java.util.Scanner;
 
-public class Problem6 {
+public class Problem6_Return_Duplicate_In_N_plus1_Array {
 
     static int duplicateElement(int[] arr) {
 

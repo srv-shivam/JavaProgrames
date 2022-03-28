@@ -9,7 +9,7 @@ package seriousPracticeDSA.arraysQuestions;
 
 import java.util.Scanner;
 
-public class Problem7 {
+public class Problem7_Left_Rotate_Element_D_Pos {
 
     private static void reverse(int[] arr, int start, int end) {
 

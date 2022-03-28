@@ -9,7 +9,7 @@ package seriousPracticeDSA.arraysQuestions;
 
 import java.util.Scanner;
 
-public class Problem8 {
+public class Problem8_Move_All_Zero_At_End {
 
     // Time Complexity O(N)
     // Space Complexity O(1)

@@ -10,7 +10,7 @@ package seriousPracticeDSA.arraysQuestions;
  */
 import java.util.Scanner;
 
-public class Problem2 {
+public class Problem2_Array_Sorted_Or_Not {
 
     static boolean isSorted(int[] arr) {
 
