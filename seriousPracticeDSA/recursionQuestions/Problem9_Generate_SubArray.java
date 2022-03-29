@@ -14,7 +14,7 @@ package seriousPracticeDSA.recursionQuestions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Problem9_Generate_Subset_Of_Array {
+public class Problem9_Generate_SubArray {
 
     static List<List<Integer>> allSubsets = new ArrayList<>();
     ;
