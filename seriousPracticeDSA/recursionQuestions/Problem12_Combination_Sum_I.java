@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Problem12_Combination_Sum {
+public class Problem12_Combination_Sum_I {
 
     static void findCombination(int[] arr, int target, int idx, ArrayList<Integer> ds, ArrayList<ArrayList<Integer>> ans) {
 
