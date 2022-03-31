@@ -8,6 +8,18 @@ package seriousPracticeDSA.recursionQuestions;
  *
  * eg: N = 3
  *     Sequence: 0  01  0110
+ *
+ * NOTE: row 1:        0
+ *       row 2:       0 1
+ *       row 3:     0 1 1 0
+ *       row 4: 0 1 1 0 1 0 0 1
+ *
+ * Here, we can notice that for 0 -> 0 1 is generated
+ *                      and for 1 -> 1 0 is generated
+ *
+ * Means each pair digits are related with parent if previous row is 0 than if Kth position for this parents
+ * pair is odder than it will be same as the parent and if it is evener than it is complimented of it's parent
+ *
  */
 
 import java.util.Scanner;
