@@ -22,10 +22,7 @@ public class Problem12_Combination_Sum {
         }
 
         if (idx == arr.length) {
-            if (target == 0) {
-                ans.add(new ArrayList<>(ds));
-                return;
-            }else return;
+            return;
         }
 
         if (arr[idx] <= target) {
