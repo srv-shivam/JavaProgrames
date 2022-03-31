@@ -14,28 +14,31 @@ import java.util.Scanner;
 
 public class Problem11_Kth_Symbol_In_Grammar {
 
-    static String result;
-
-    static void generate(String s, int n) {
+    static int generate(int n, int k) {
 
         if (n == 1) {
-            result = s;
-            return;
+            return 0;
         }
-        System.out.println("Before 1st REPLACE_ALL use: " + s);
-        s.replaceAll("0", "01");
-        System.out.println("After 1st REPLACE_ALL use: " + s);
-        s.replaceAll("1", "10");
-        System.out.println("After 2nd REPLACE_ALL use: " + s);
-        generate(s, n - 1);
+
+        int parent = generate(n - 1, k >> 2 + k % 2);
+        boolean isK = k % 2 == 1; // if ODD = true,  EVEN = false
+
+        if (parent == 1) {
+            return isK ? 1 : 0;
+        } else {
+            return isK ? 0 : 1;
+        }
     }
 
     public static void main(String[] args) {
 
-        int n = 3;
-        generate("01", n-1);
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println(result);
+        System.out.print("Enter value of N and K: ");
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+
+        System.out.println("Kth bit of Nth row is: " + generate(n, k));
     }
 
 }
