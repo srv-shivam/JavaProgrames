@@ -14,6 +14,10 @@ public class Problem11_First_SubArray_With_Given_Sum {
 
     // Time Complexity: O(N)
     // Space Complexity: O(1)
+    //
+    // LOGIC: Try to implement like sliding window concept, put pointer i and pointer j as the boundaries
+    //        of the window and try to increase the window side until we get the given sum but if elements
+    //        can't be added further decrease the window from start (i.e i) and add it back to the sum.
     static ArrayList<Integer> findSubArray1(int[] arr, int sum) {
 
         ArrayList<Integer> ans = new ArrayList<>();
