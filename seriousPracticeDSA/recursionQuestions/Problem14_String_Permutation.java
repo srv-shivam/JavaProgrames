@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Problem14_String_Permutation {
 
-    // Time Complexity: O(N!)
+    // Time Complexity: O(N! * N)
     // Space Complexity: O(N) + O(N) {Depth of recursion + Auxiliary space flag}
     //
     // NOTE: I have used flag as check for the elements which I have selected till that particular depth of recursion
