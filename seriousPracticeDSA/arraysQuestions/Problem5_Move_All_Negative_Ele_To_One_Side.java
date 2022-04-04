@@ -13,7 +13,7 @@ public class Problem5_Move_All_Negative_Ele_To_One_Side {
 
 
     // If we care about the sequence of all the elements whether it is positive or negative element
-    // this is the logic to implement such case
+    // this is the logic to implement in such case
     //
     // Time Complexity: O(N)
     // Space Complexity: O(N)
