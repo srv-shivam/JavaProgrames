@@ -23,7 +23,7 @@ public class Problem7_Left_Rotate_Element_D_Pos {
 
     static void rotateByDPosition(int[] arr, int D) {
 
-        int d = D%6;
+        int d = D%arr.length;
 
         reverse(arr, 0, d-1);
 
