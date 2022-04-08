@@ -63,6 +63,7 @@ public class MyHashMap {
         while (hashTable[i] != -1) {
             if (hashTable[i] == key) {
                 hashTable[i] = -2;
+                --size;
                 return true;
             }
             i = (i + 1) % capacity;

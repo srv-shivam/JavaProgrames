@@ -21,5 +21,18 @@ public class Solution {
         System.out.print("\nArrangement of keys in MyHashMap: ");
         myHashMap.display();
 
+        myHashMap.erase(52);
+        myHashMap.erase(77);
+        myHashMap.erase(64);
+        myHashMap.erase(64);
+
+        System.out.print("\nNew Arrangement of keys in MyHashMap after deletion: ");
+        myHashMap.display();
+
+        myHashMap.insert(90);
+        myHashMap.insert(7);
+
+        System.out.print("\nNew Arrangement of keys in MyHashMap after insertion: ");
+        myHashMap.display();
     }
 }
