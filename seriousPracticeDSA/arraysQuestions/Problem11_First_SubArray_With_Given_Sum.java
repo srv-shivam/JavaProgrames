@@ -6,7 +6,6 @@ package seriousPracticeDSA.arraysQuestions;
  * eg: I/P: a[] = [1, 2, 3, 7, 5] Sum = 12
  *     O/P: [2, 4] {Array element from position 2 to 4 sum up to the given sum. i.e 2+3+7 = 12}
  */
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
