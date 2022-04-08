@@ -24,7 +24,7 @@ public class Problem11_First_SubArray_With_Given_Sum {
         int temp = sum;
         int i = 0, j = 0;
 
-        while (i < arr.length && j < arr.length) {
+        while ((i < arr.length) && (j < arr.length)) {
 
             if (arr[j] <= temp) {
                 temp -= arr[j];
