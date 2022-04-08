@@ -10,6 +10,7 @@ public class MyHashMap {
     MyHashMap(int cap) {
         capacity = cap;
         size = 0;
+        hashTable = new int[capacity];
         Arrays.fill(hashTable, -1);
     }
 
@@ -34,36 +35,47 @@ public class MyHashMap {
         return false;
     }
 
-    void insert(int key) {
-        int h = hash(key);
-        int i = h;
+    boolean insert(int key) {
 
-        while (hashTable[i] != -1) {
+        // HashTable is completely filled no space to insert
+        if (size == capacity)
+            return false;
+
+        int i = hash(key);
+
+        while (hashTable[i] != -1 && hashTable[i] != -2 && hashTable[i] != key)
             i = (i + 1) % capacity;
 
-            if (i == h) {
-                System.out.println("Error!!");
-                return;
-            }
+        // Key is already present
+        if (key == hashTable[i])
+            return false;
+        else {
+            hashTable[i] = key;
+            ++size;
+            return true;
         }
-        hashTable[i] = key;
     }
 
-    void delete(int key) {
+    boolean erase(int key) {
         int h = hash(key);
         int i = h;
 
         while (hashTable[i] != -1) {
             if (hashTable[i] == key) {
                 hashTable[i] = -2;
-                return;
+                return true;
             }
             i = (i + 1) % capacity;
 
-            if (i == h) {
-                System.out.println("Error!!");
-                return;
-            }
+            if (i == h)
+                return false;
+        }
+        return false;
+    }
+
+    void display() {
+        for (int val : hashTable) {
+            System.out.print(val + " ");
         }
     }
 }
