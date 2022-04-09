@@ -1,8 +1,31 @@
 package seriousPracticeDSA.arraysQuestions;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Problem12_SubArray_With_Zero_Sum {
+
+
+    static boolean isSubArrayWith0Sum(int[] arr) {
+
+        // array to store the cumulative sum of each array element
+        int[] cumulativeSum = new int[arr.length];
+        int sum = 0;
+        for (int i = 0; i < arr.length; ++i) {
+            sum += arr[i];
+            cumulativeSum[i] = sum;
+        }
+
+        // Now we will use Hashset to check for duplicate cumulative sum
+        HashSet<Integer> set = new HashSet<>();
+        for (int val : cumulativeSum) {
+            if (set.contains(val)) return true;
+            if (val == 0) return true;
+            set.add(val);
+        }
+        return false;
+    }
+
 
     // Inefficient approach
     //
@@ -34,7 +57,8 @@ public class Problem12_SubArray_With_Zero_Sum {
             arr[i] = sc.nextInt();
         }
 
-        System.out.println(isSubArray(arr));
+        System.out.println("Solution using O(N^2) approach: " + isSubArray(arr));
+        System.out.println("Solution using O(N) approach: " + isSubArrayWith0Sum(arr));
     }
 
 
