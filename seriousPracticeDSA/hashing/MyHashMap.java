@@ -3,7 +3,6 @@ package seriousPracticeDSA.hashing;
 import java.util.Arrays;
 
 public class MyHashMap {
-
     static int[] hashTable;
     static int capacity, size;
 
