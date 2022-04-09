@@ -26,7 +26,7 @@ public class MyHashMap {
             // we are circularly rotating i in hashTable array
             i = (i + 1) % capacity;
 
-            // After traversing whole hashTable when i arrives back to initial value
+            // After traversing whole hashTable when "i" arrives back to initial value
             // of i which was set before the loop, means we didn't find the key
             if (i == h)
                 return false;
