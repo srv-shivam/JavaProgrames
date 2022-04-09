@@ -5,7 +5,10 @@ import java.util.Scanner;
 
 public class Problem12_SubArray_With_Zero_Sum {
 
-
+    /**
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
     static boolean isSubArrayWith0Sum(int[] arr) {
 
         // array to store the cumulative sum of each array element
