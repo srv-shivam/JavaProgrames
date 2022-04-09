@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Problem12_SubArray_With_Zero_Sum {
 
+    // Inefficient approach
+    //
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(1)
     static boolean isSubArray(int[] arr) {
 
         for (int i = 0; i < arr.length; ++i) {
