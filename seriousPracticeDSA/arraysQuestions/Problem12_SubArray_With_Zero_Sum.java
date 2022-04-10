@@ -77,8 +77,9 @@ public class Problem12_SubArray_With_Zero_Sum {
         System.out.println("Solution using O(N^2) approach: " + isSubArray(arr));
         System.out.println("Solution using O(N) time and space approach: " + isSubArrayWith0Sum(arr));
 
-
-        System.out.println("Solution using O(N) approach: " + subArrayWithKSum(arr, 6));
+        System.out.print("\n\nEnter value of k: ");
+        int k = sc.nextInt();
+        System.out.println("Solution using O(N) approach: " + subArrayWithKSum(arr, k));
     }
 
 
