@@ -2,8 +2,22 @@ package seriousPracticeDSA.arraysQuestions;
 
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Problem12_SubArray_With_Zero_Sum {
+
+    static boolean subArrayWithKSum(int[] arr, int k) {
+
+        Set<Integer> set = new HashSet<>();
+        int sum = 0;
+
+        for (int val : arr) {
+            set.add(sum);
+            if (set.contains(k - sum)) return true;
+            sum += val;
+        }
+        return false;
+    }
 
     /**
      * Time Complexity: O(N)
@@ -61,7 +75,10 @@ public class Problem12_SubArray_With_Zero_Sum {
         }
 
         System.out.println("Solution using O(N^2) approach: " + isSubArray(arr));
-        System.out.println("Solution using O(N) approach: " + isSubArrayWith0Sum(arr));
+        System.out.println("Solution using O(N) time and space approach: " + isSubArrayWith0Sum(arr));
+
+
+        System.out.println("Solution using O(N) approach: " + subArrayWithKSum(arr, 6));
     }
 
 
