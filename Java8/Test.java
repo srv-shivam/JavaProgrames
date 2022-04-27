@@ -2,6 +2,15 @@ package Java8;
 
 import java.util.*;
 
+/**
+ * Functional Interface -> Interface which has only one abstract method
+ */
+
+@FunctionalInterface
+interface MyInterface {
+    int sum(int a, int b);
+}
+
 class Employee {
     String name;
     int eno;
@@ -38,5 +47,10 @@ public class Test {
 //        e.sort((e1, e2) -> e1.name.compareTo(e2.name));
         e.sort(Comparator.comparing(e2 -> e2.name));
         System.out.println(e);
+
+        /************************************************************************************************************/
+        MyInterface myInterface = (a, b) -> a + b;
+
+        System.out.printf("Sum of 4 and 8: " + myInterface.sum(4, 8));
     }
 }
