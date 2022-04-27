@@ -49,7 +49,8 @@ public class Test {
         System.out.println(e);
 
         /************************************************************************************************************/
-        MyInterface myInterface = (a, b) -> a + b;
+//        MyInterface myInterface = (a, b) -> a + b;
+        MyInterface myInterface = Integer::sum;
 
         System.out.printf("Sum of 4 and 8: " + myInterface.sum(4, 8));
     }
