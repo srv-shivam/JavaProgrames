@@ -28,9 +28,9 @@ public class Test1 implements MyInterface2, Left, Right {
 
     @Override
     public void m1() {
-//        Left.super.m1(); ==> If wanted to use Left Interface implementation
-//        Right.super.m1();  ==> If wanted to use Right Interface implementation
-//        System.out.println("Our own m1 method implementation");  ==> If we want to give our own implementation
+        Left.super.m1(); //==> If wanted to use Left Interface implementation
+//        Right.super.m1();  //==> If wanted to use Right Interface implementation
+//        System.out.println("Our own m1 method implementation");  //==> If we want to give our own implementation
     }
 
     /**
