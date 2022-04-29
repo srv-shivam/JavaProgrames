@@ -24,7 +24,13 @@ interface Right {
     }
 }
 
-public class Test1 implements MyInterface2, Left, Right {
+interface MyInterface3 {
+    static void sayHello() {
+        System.out.println("Hello!, from sayHello method");
+    }
+}
+
+public class Test1 implements MyInterface2, Left, Right, MyInterface3 {
 
     @Override
     public void m1() {
@@ -38,8 +44,6 @@ public class Test1 implements MyInterface2, Left, Right {
      * so to remove the unrelated method error we can override and give our own implementation
      * or by using super we can use the definition of m1 method of respective parent interface
      */
-
-
     public void display() {
         System.out.println("Overriding Implementation of Default Method");
     }
@@ -50,6 +54,14 @@ public class Test1 implements MyInterface2, Left, Right {
 
         Test1 obj1 = new Test1();
         obj1.m1();
+
+        // Ways to access the static method in Interface
+        MyInterface3.sayHello(); // Valid
+        // sayHello(); ==> Invalid
+        // Test1.sayHello(); ==> Invalid
+        // Test1 t = new Text1();
+        // t.sayHello() ==> Invalid
     }
 
 }
+
