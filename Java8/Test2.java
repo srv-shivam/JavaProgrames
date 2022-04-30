@@ -24,6 +24,7 @@ package Java8;
  * ....
  */
 
+import java.util.Arrays;
 import java.util.function.*;
 
 public class Test2 {
@@ -34,6 +35,11 @@ public class Test2 {
         Predicate<Integer> p = i -> i % 2 == 0;
         System.out.println(p.test(10));
         System.out.println(p.test(15));
+
+        String[] str = {"Nag", "Shivam", "RatanTata", "Modi", "Bhagwaan Krishna"};
+        Arrays.stream(str)
+                .filter(s -> s.length() > 5)
+                .forEach(System.out::println);
 
     }
 
